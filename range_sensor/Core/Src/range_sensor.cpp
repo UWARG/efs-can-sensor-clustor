@@ -5,7 +5,7 @@
  *      Author: praka
  */
 
-static void set_config(acc_detector_distance_config_t *detector_config, distance_preset_config_t preset)
+static void Rangefinder::set_config(acc_detector_distance_config_t *detector_config, distance_preset_config_t preset)
 {
 	// Add configuration of the detector here
 	switch (preset)
@@ -43,7 +43,7 @@ static void set_config(acc_detector_distance_config_t *detector_config, distance
 }
 
 
-static bool initialize_detector_resources(distance_detector_resources_t *resources)
+static bool Rangefinder::initialize_detector_resources(distance_detector_resources_t *resources)
 {
 	resources->handle = acc_detector_distance_create(resources->config);
 	if (resources->handle == NULL)
@@ -76,7 +76,7 @@ static bool initialize_detector_resources(distance_detector_resources_t *resourc
 }
 
 
-static bool do_sensor_calibration(acc_sensor_t     *sensor,
+static bool Rangefinder::do_sensor_calibration(acc_sensor_t     *sensor,
                                   acc_cal_result_t *sensor_cal_result,
                                   void             *buffer,
                                   uint32_t         buffer_size)
@@ -114,7 +114,7 @@ static bool do_sensor_calibration(acc_sensor_t     *sensor,
 }
 
 
-static bool do_full_detector_calibration(distance_detector_resources_t *resources,
+static bool Rangefinder::do_full_detector_calibration(distance_detector_resources_t *resources,
                                          const acc_cal_result_t        *sensor_cal_result)
 {
 	bool done = false;
@@ -142,7 +142,7 @@ static bool do_full_detector_calibration(distance_detector_resources_t *resource
 }
 
 
-static bool do_detector_calibration_update(distance_detector_resources_t *resources,
+static bool Rangefinder::do_detector_calibration_update(distance_detector_resources_t *resources,
                                            const acc_cal_result_t        *sensor_cal_result)
 {
 	bool done = false;
@@ -168,7 +168,7 @@ static bool do_detector_calibration_update(distance_detector_resources_t *resour
 }
 
 
-static bool do_detector_get_next(distance_detector_resources_t  *resources,
+static bool Rangefinder::do_detector_get_next(distance_detector_resources_t  *resources,
                                  const acc_cal_result_t         *sensor_cal_result,
                                  acc_detector_distance_result_t *result)
 {
@@ -214,7 +214,7 @@ static bool do_detector_get_next(distance_detector_resources_t  *resources,
 }
 
 
-static void print_distance_result(const acc_detector_distance_result_t *result)
+static void Rangefinder::print_distance_result(const acc_detector_distance_result_t *result)
 {
 	printf("%d detected distances", result->num_distances);
 	if (result->num_distances > 0)
