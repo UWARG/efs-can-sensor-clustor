@@ -8,7 +8,7 @@
 #ifndef INC_MLX90393_I2C_HPP_
 #define INC_MLX90393_I2C_HPP_
 
-#define DEFAULT_I2C_ADDRESS 0x0F << 1 //Set I2C address
+#define DEFAULT_I2C_ADDRESS 0x0C << 1 //Set I2C address
 #define CS GPIO_PIN_5 //Set CS pin
 // Flags to use with "zyxt" variables.
 #define MLX90393_T  0x01  /* Temperature */
@@ -21,17 +21,17 @@
 #define MLX90393_CONF4 0x03         /**< Sensitivty drift. */
 #define MLX90393_GAIN_SHIFT 4       /**< Left-shift for gain bits. */
 #define MLX90393_HALL_CONF 0x0C     /**< Hall plate spinning rate adj. */
-#define MLX90393_STATUS_OK 0x00     /**< OK value for status response. */
-#define MLX90393_STATUS_SMMODE 0x08 /**< SM Mode status response. */
-#define MLX90393_STATUS_RESET 0x01  /**< Reset value for status response. */
-#define MLX90393_STATUS_ERROR 0xFF  /**< OK value for status response. */
-#define MLX90393_STATUS_MASK 0xFC   /**< Mask for status OK checks. */
 
 class MLX90393{
 	public:
 		MLX90393();
 		bool mlx90393_i2c_SM(uint8_t *rx_data, uint8_t zyxt); //Start single measurement
 		bool mlx90393_i2c_RM(uint8_t *rx_data, uint8_t zyxt); //Read measurement
+		bool mlx90393_i2c_EX();
+		bool mlx90393_i2c_RT();
+		bool mlx90393_i2c_WR(uint8_t *tx_data, uint8_t reg);
+		bool mlx90393_i2c_RR(uint8_t reg);
+		bool mlx90393_has_error();
 		int mlx90393_zyxt_set_bits(uint8_t zyxt);
 		bool mlx90393_set_gain();
 		bool mlx90393_set_resolution();
@@ -40,7 +40,23 @@ class MLX90393{
 		bool mlx90393_set_trig_int();
 		uint16_t mlx90393_decode_helper(uint8_t *data);
 
+		enum { BURST_MODE_BIT = 0x80, WAKE_ON_CHANGE_BIT = 0x40,
+		       POLLING_MODE_BIT = 0x20, ERROR_BIT = 0x10, EEC_BIT = 0x08,
+		       RESET_BIT = 0x04, D1_BIT = 0x02, D0_BIT = 0x01 };
 
+		enum {
+		  CMD_NOP = 0x00,
+		  CMD_EXIT = 0x80,
+		  CMD_START_BURST = 0x10,
+		  CMD_WAKE_ON_CHANGE = 0x20,
+		  CMD_START_MEASUREMENT = 0x30,
+		  CMD_READ_MEASUREMENT = 0x40,
+		  CMD_READ_REGISTER = 0x50,
+		  CMD_WRITE_REGISTER = 0x60,
+		  CMD_MEMORY_RECALL = 0xd0,
+		  CMD_MEMORY_STORE = 0xe0,
+		  CMD_RESET = 0xf0
+		};
 
 	private:
 		uint16_t mlx90393_t;
@@ -48,8 +64,7 @@ class MLX90393{
 		uint16_t mlx90393_y;
 		uint16_t mlx90393_z;
 		uint8_t status;
-
-
+		uint16_t reg;
 
 		void mlx90393_i2c_transmit(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		void mlx90393_decode(uint8_t *rx_data, uint8_t zyxt);

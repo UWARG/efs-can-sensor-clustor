@@ -19,7 +19,7 @@ void MLX90393::mlx90393_i2c_transmit(uint8_t *tx_data, uint8_t *rx_data, uint16_
 	uint8_t rx_buf[rx_size + 2];
 	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, tx_data, tx_size, HAL_MAX_DELAY);
 	HAL_I2C_Master_Receive(&hi2c3, DEFAULT_I2C_ADDRESS + 1, rx_buf, rx_size + 1, HAL_MAX_DELAY);
-	status = rx_data[0];
+	status = rx_buf[0];
 	for(int i = 0; i < rx_size; i++){
 		rx_data[i] = rx_buf[i + 1];
 	}
@@ -27,24 +27,49 @@ void MLX90393::mlx90393_i2c_transmit(uint8_t *tx_data, uint8_t *rx_data, uint16_
 
 bool MLX90393::mlx90393_i2c_SM(uint8_t *rx_data, uint8_t zyxt)
 {
-	uint8_t tx_data = (0x30)| zyxt;
+	uint8_t tx_data = CMD_START_MEASUREMENT | zyxt;
 	mlx90393_i2c_transmit(tx_data, rx_data, 1, 1);
-	if((status == MLX90393_STATUS_OK) || (status == MLX90393_STATUS_SMMODE)){
-		return true;
-	}
-	return false;
+	return !(mlx_90393_has_error() || (status & POLLING_MODE_BIT) == 0);
 }
 
 bool MLX90393::mlx90393_i2c_RM(uint8_t *rx_data, uint8_t zyxt){
 	int rx_size = zyxt_set_bits(zyxt) + 1;
-	uint8_t tx_data = (0x40) | zyxt;
+	uint8_t tx_data = CMD_READ_MEASUREMENT | zyxt;
 	mlx90393_i2c_transmit(tx_data, rx_data, 1, 2 * rx_size + 1);
-	if(status != MLX90393_STATUS_OK){
-		return false;
-	}
 	mlx90393_decode(rx_data, zyxt);
 	//Need to adjust with resolution and gain
-	return true;
+	return !mlx_90393_has_error();
+}
+
+bool MLX90393::mlx90393_i2c_EX(){
+	mlx90393_i2c_transmit(CMD_EXIT, nullptr, 1, 0);
+	return !mlx90393_has_error();
+}
+
+bool MLX90393::mlx90393_i2c_RT(){
+	mlx90393_i2c_transmit(CMD_RESET, nullptr, 1, 0);
+	return !(mlx90393_has_error() || (status & RESET_BIT) == 0);
+}
+
+bool MLX90393::mlx90393_i2c_WR(uint8_t *tx_data, uint8_t reg){
+	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, CMD_WRITE_REGISTER, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, tx_data, 2, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, reg << 2, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Receive(&hi2c3, DEFAULT_I2C_ADDRESS + 1, status, 1, HAL_MAX_DELAY);
+	return !mlx90393_has_error();
+}
+bool MLX90393::mlx90393_i2c_RR(uint8_t reg){
+	uint8_t rx_data[3];
+	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, CMD_READ_REGISTER, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, reg << 2, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Receive(&hi2c3, DEFAULT_I2C_ADDRESS + 1, rx_data, 3, HAL_MAX_DELAY);
+	status = rx_data[0];
+	reg = mlx90393_decode_helper(rx_data + 1);
+	return !mlx90393_has_error();
+}
+
+bool MLX90393::mlx90393_has_error(){
+	return (status & ERROR_BIT) != 0;
 }
 
 int MLX90393::mlx90393_zyxt_set_bits(uint8_t zyxt){
@@ -81,5 +106,6 @@ void MLX90393::mlx90393_decode(uint8_t *rx_data, u8int_t zyxt){
 }
 
 uint16_t MLX90393::mlx90393_decode_helper(uint8_t *data){
-	return (data[0] << 8 + data[1]);
+	return (data[0] << 8 | data[1]);
 }
+
