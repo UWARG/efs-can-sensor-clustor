@@ -23,15 +23,18 @@
 //Shifts and masks
 #define MLX90393_GAIN_SHIFT 4       // Left-shift for gain bits
 #define MLX90393_GAIN_MASK 0x0070	// Mask to clear bits 4-6
-#define MLX90393_X_RES_MASK 0x00C0  // Mask to clear bits 5-6
+#define MLX90393_X_RES_MASK 0x0060  // Mask to clear bits 5-6
 #define MLX90393_Y_RES_MASK 0x0180  // Mask to clear bits 7-8
 #define MLX90393_Z_RES_MASK 0x0600  // Mask to clear bits 9-10
 #define MLX90393_X_RES_SHIFT 5       // Left-shift for x_res bits
 #define MLX90393_Y_RES_SHIFT 7       // Left-shift for y_res bits
 #define MLX90393_Z_RES_SHIFT 9       // Left-shift for z_res bits
-#define MLX90393_HALL_CONF 0x0C     // Hall plate spinning rate adj
-#define MLX90393_RES_17 0x8000		// Mask to remove sign bit for res = 2 (MSB = bit 17)
-#define MLX90393_RES_18 0x4000		// Mask to remove sign bit for res = 3 (MSB = bit 18)
+#define MLX90393_RES_17_MASK 0x8000		// Mask to remove sign bit for res = 2 (MSB = bit 17)
+#define MLX90393_RES_18_MASK 0x4000		// Mask to remove sign bit for res = 3 (MSB = bit 18)
+#define MLX90393_FILTER_MASK 0x001C
+#define MLX90393_FILTER_SHIFT 2
+#define MLX90393_OSR_MASK 0x1800
+#define MLX90393_OSR_SHIFT 11
 //Commands
 #define CMD_NOP 0x00
 #define	CMD_EXIT 0x80
@@ -53,6 +56,21 @@
 #define RESET_BIT 0x04
 #define D1_BIT 0x02
 #define D0_BIT 0x01
+//Gain selection
+#define MLX90393_GAIN_5X 0x00
+#define MLX90393_GAIN_4X 0x01
+#define MLX90393_GAIN_3X 0x02
+#define MLX90393_GAIN_2_5X 0x03
+#define MLX90393_GAIN_2X 0x04
+#define MLX90393_GAIN_1_67X 0x05
+#define MLX90393_GAIN_1_33X 0x06
+#define MLX90393_GAIN_1X 0x07
+//Res selection
+#define MLX90393_RES_15 0x00
+#define MLX90393_RES_16 0x01
+#define MLX90393_RES_17 0x02
+#define MLX90393_RES_18 0x03
+
 
 class MLX90393{
 	public:
@@ -64,23 +82,21 @@ class MLX90393{
 		bool mlx90393_i2c_WR(uint8_t reg, uint8_t *tx_data); //Write register cmd
 		bool mlx90393_i2c_RR(uint8_t reg); // Read register cmd
 		bool mlx90393_has_error(); //Check status bit error
-		int mlx90393_zyxt_set_bits(uint8_t zyxt);
 		bool mlx90393_set_gain(uint8_t gain);
 		bool mlx90393_get_gain();
 		bool mlx90393_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res);
 		bool mlx90393_get_resolution();
-		bool mlx90393_set_filter();
-		bool mlx90393_set_oversampling();
-		bool mlx90393_set_trig_int();
-		uint16_t mlx90393_decode_helper(uint8_t *data);
-		void mlx90393_convert_raw();
+		bool mlx90393_set_filter(uint8_t filter);
+		bool mlx90393_get_filter();
+		bool mlx90393_set_oversampling(uint8_t osr);
+		bool mlx90393_get_oversampling();
 
 	private:
 		typedef struct raw{
-		    uint16_t t;
-		    uint16_t x;
-		    uint16_t y;
-		    uint16_t z;
+		    int16_t t;
+		    int16_t x;
+		    int16_t y;
+		    int16_t z;
 		} raw;
 
 		typedef struct converted{
@@ -99,8 +115,11 @@ class MLX90393{
 			uint8_t z_res;
 			uint8_t hallconf;
 			uint8_t tcmp_en;
+			uint8_t filter;
+			uint8_t osr;
 		}reg;
 
+		//See 16.2.4
 		const float sens_lookup_0xC[8][4][2] = {
 	        /* GAIN_SEL = 0, 5x gain */
 	        {{0.751, 1.210}, {1.502, 2.420}, {3.004, 4.840}, {6.009, 9.680}},
@@ -120,18 +139,11 @@ class MLX90393{
 	        {{0.150, 0.242}, {0.300, 0.484}, {0.601, 0.968}, {1.202, 1.936}},
 		};
 
-		void mlx90393_i2c_transmit(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
+		void mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		void mlx90393_decode(uint8_t *rx_data, uint8_t zyxt);
 		void mlx90393_convert();
-
+		uint16_t mlx90393_decode_helper(uint8_t *data);
+		int mlx90393_zyxt_set_bits(uint8_t zyxt);
 };
-
-
-
-
-
-
-
-
 
 #endif /* INC_MLX90393_I2C_HPP_ */
