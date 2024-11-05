@@ -8,6 +8,10 @@
 #ifndef INC_MLX90393_I2C_HPP_
 #define INC_MLX90393_I2C_HPP_
 
+#include "stm32l4xx_hal.h"
+#include "stm32l4xx_hal_i2c.h"
+#include <cstdint>
+
 #define DEFAULT_I2C_ADDRESS 0x0C << 1 //Set I2C address
 #define CS GPIO_PIN_5 //Set CS pin
 // Flags to use with "zyxt" variables.
@@ -71,17 +75,36 @@
 #define MLX90393_RES_17 0x02
 #define MLX90393_RES_18 0x03
 
+//See 16.2.4
+const float sens_lookup_0xC[8][4][2] = {
+/* GAIN_SEL = 0, 5x gain */
+{ { 0.751, 1.210 }, { 1.502, 2.420 }, { 3.004, 4.840 }, { 6.009, 9.680 } },
+/* GAIN_SEL = 1, 4x gain */
+{ { 0.601, 0.968 }, { 1.202, 1.936 }, { 2.403, 3.872 }, { 4.840, 7.744 } },
+/* GAIN_SEL = 2, 3x gain */
+{ { 0.451, 0.726 }, { 0.901, 1.452 }, { 1.803, 2.904 }, { 3.605, 5.808 } },
+/* GAIN_SEL = 3, 2.5x gain */
+{ { 0.376, 0.605 }, { 0.751, 1.210 }, { 1.502, 2.420 }, { 3.004, 4.840 } },
+/* GAIN_SEL = 4, 2x gain */
+{ { 0.300, 0.484 }, { 0.601, 0.968 }, { 1.202, 1.936 }, { 2.403, 3.872 } },
+/* GAIN_SEL = 5, 1.667x gain */
+{ { 0.250, 0.403 }, { 0.501, 0.807 }, { 1.001, 1.613 }, { 2.003, 3.227 } },
+/* GAIN_SEL = 6, 1.333x gain */
+{ { 0.200, 0.323 }, { 0.401, 0.645 }, { 0.801, 1.291 }, { 1.602, 2.581 } },
+/* GAIN_SEL = 7, 1x gain */
+{ { 0.150, 0.242 }, { 0.300, 0.484 }, { 0.601, 0.968 }, { 1.202, 1.936 } },
+};
+
 
 class MLX90393{
 	public:
-		MLX90393();
+		MLX90393(I2C_HandleTypeDef *hi2c);
 		bool mlx90393_i2c_SM(uint8_t *rx_data, uint8_t zyxt); //Start single measurement mode cmd
 		bool mlx90393_i2c_RM(uint8_t *rx_data, uint8_t zyxt); //Read measurement cmd
 		bool mlx90393_i2c_EX(); //Exit mode cmd
 		bool mlx90393_i2c_RT(); //Reset cmd
 		bool mlx90393_i2c_WR(uint8_t reg, uint8_t *tx_data); //Write register cmd
 		bool mlx90393_i2c_RR(uint8_t reg); // Read register cmd
-		bool mlx90393_has_error(); //Check status bit error
 		bool mlx90393_set_gain(uint8_t gain);
 		bool mlx90393_get_gain();
 		bool mlx90393_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res);
@@ -92,21 +115,21 @@ class MLX90393{
 		bool mlx90393_get_oversampling();
 
 	private:
-		typedef struct raw{
+		struct RawData{
 		    int16_t t;
 		    int16_t x;
 		    int16_t y;
 		    int16_t z;
-		} raw;
+		} ;
 
-		typedef struct converted{
+		struct ConvertedData{
 		    float t;
 		    float x;
 		    float y;
 		    float z;
-		} converted;
+		};
 
-		typedef struct reg{
+		struct RegVal{
 			uint8_t stat;
 			uint16_t val;
 			uint8_t gain;
@@ -117,29 +140,14 @@ class MLX90393{
 			uint8_t tcmp_en;
 			uint8_t filter;
 			uint8_t osr;
-		}reg;
-
-		//See 16.2.4
-		const float sens_lookup_0xC[8][4][2] = {
-	        /* GAIN_SEL = 0, 5x gain */
-	        {{0.751, 1.210}, {1.502, 2.420}, {3.004, 4.840}, {6.009, 9.680}},
-	        /* GAIN_SEL = 1, 4x gain */
-	        {{0.601, 0.968}, {1.202, 1.936}, {2.403, 3.872}, {4.840, 7.744}},
-	        /* GAIN_SEL = 2, 3x gain */
-	        {{0.451, 0.726}, {0.901, 1.452}, {1.803, 2.904}, {3.605, 5.808}},
-	        /* GAIN_SEL = 3, 2.5x gain */
-	        {{0.376, 0.605}, {0.751, 1.210}, {1.502, 2.420}, {3.004, 4.840}},
-	        /* GAIN_SEL = 4, 2x gain */
-	        {{0.300, 0.484}, {0.601, 0.968}, {1.202, 1.936}, {2.403, 3.872}},
-	        /* GAIN_SEL = 5, 1.667x gain */
-	        {{0.250, 0.403}, {0.501, 0.807}, {1.001, 1.613}, {2.003, 3.227}},
-	        /* GAIN_SEL = 6, 1.333x gain */
-	        {{0.200, 0.323}, {0.401, 0.645}, {0.801, 1.291}, {1.602, 2.581}},
-	        /* GAIN_SEL = 7, 1x gain */
-	        {{0.150, 0.242}, {0.300, 0.484}, {0.601, 0.968}, {1.202, 1.936}},
 		};
 
-		void mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
+		struct RawData raw;
+		struct ConvertedData converted;
+		struct RegVal reg;
+		I2C_HandleTypeDef *hi2c;
+
+		HAL_StatusTypeDef mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		void mlx90393_decode(uint8_t *rx_data, uint8_t zyxt);
 		void mlx90393_convert();
 		uint16_t mlx90393_decode_helper(uint8_t *data);

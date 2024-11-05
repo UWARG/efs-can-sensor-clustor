@@ -5,8 +5,10 @@
  *      Author: Henry
  */
 #include <mlx90393_i2c.hpp>
+#include "stm32l4xx_hal.h"
+#include "stm32l4xx_hal_i2c.h"
 
-MLX90393::MLX90393(){
+MLX90393::MLX90393(I2C_HandleTypeDef *hi2c):hi2c(hi2c){
 	HAL_GPIO_WritePin(GPIOB, CS, GPIO_PIN_SET);
 	mlx90393_i2c_EX();
 	mlx90393_i2c_RT();
@@ -20,53 +22,62 @@ MLX90393::MLX90393(){
 	reg.osr = 0x00;
 }
 
-void MLX90393::mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
+HAL_StatusTypeDef MLX90393::mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
 {
 	uint8_t rx_buf[rx_size + 2];
-	HAL_I2C_Master_Transmit(&hi2c3, DEFAULT_I2C_ADDRESS, tx_data, tx_size, HAL_MAX_DELAY);
-	HAL_I2C_Master_Receive(&hi2c3, DEFAULT_I2C_ADDRESS + 1, rx_buf, rx_size + 1, HAL_MAX_DELAY);
-	reg.stat = rx_buf[0];
-	for(int i = 0; i < rx_size; i++){
-		rx_data[i] = rx_buf[i + 1];
+	HAL_StatusTypeDef status;
+	status = HAL_I2C_Master_Transmit(hi2c, DEFAULT_I2C_ADDRESS, tx_data, tx_size, HAL_MAX_DELAY);
+	if(status != HAL_OK){
+		return status;
 	}
+	status = HAL_I2C_Master_Receive(hi2c, DEFAULT_I2C_ADDRESS + 1, rx_buf, rx_size + 1, HAL_MAX_DELAY);
+	return status;
 }
 
 bool MLX90393::mlx90393_i2c_SM(uint8_t *rx_data, uint8_t zyxt)
 {
-	uint8_t tx_data = CMD_START_MEASUREMENT | zyxt;
-	mlx90393_i2c_transceive(tx_data, rx_data, 1, 1);
-	return !(mlx_90393_has_error() || (reg.stat & POLLING_MODE_BIT) == 0);
+	uint8_t* tx_data;
+	*tx_data = (uint8_t)CMD_START_MEASUREMENT | zyxt;
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(tx_data, rx_data, 1, 1);
+	return status == HAL_OK ? 0 : 1;
 }
 
 bool MLX90393::mlx90393_i2c_RM(uint8_t *rx_data, uint8_t zyxt){
-	int rx_size = zyxt_set_bits(zyxt) + 1;
-	uint8_t tx_data = CMD_READ_MEASUREMENT | zyxt;
-	mlx90393_i2c_transceive(tx_data, rx_data, 1, 2 * rx_size + 1);
+	int rx_size = mlx90393_zyxt_set_bits(zyxt) + 1;
+	uint8_t* tx_data;
+	*tx_data = (uint8_t)CMD_READ_MEASUREMENT | zyxt;
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(tx_data, rx_data, 1, 2 * rx_size + 1);
 	mlx90393_decode(rx_data, zyxt);
 	mlx90393_convert();
-	return !mlx_90393_has_error();
+	return status == HAL_OK ? 0 : 1;
 }
 
 bool MLX90393::mlx90393_i2c_EX(){
-	mlx90393_i2c_transceive(CMD_EXIT, nullptr, 1, 0);
-	return !mlx90393_has_error();
+	uint8_t* tx_data;
+	*tx_data = CMD_EXIT;
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(tx_data, nullptr, 1, 0);
+	return status == HAL_OK ? 0 : 1;
 }
 
 bool MLX90393::mlx90393_i2c_RT(){
-	mlx90393_i2c_transceive(CMD_RESET, nullptr, 1, 0);
-	return !(mlx90393_has_error() || (mlx90393_stat & RESET_BIT) == 0);
+	uint8_t* tx_data;
+	*tx_data = CMD_RESET;
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(tx_data, nullptr, 1, 0);
+	return status == HAL_OK ? 0 : 1;
 }
 
-bool MLX90393::mlx90393_i2c_WR(uint8_t reg, uint8_t *tx_data){
-	if(HAL_I2C_Mem_Write(&hi2c3, DEFAULT_I2C_ADDRESS, 0x00 << 2, I2C_MEMADD_SIZE_16BIT, tx_data, 1, HAL_MAX_DELAY) != HAL_OK){
+bool MLX90393::mlx90393_i2c_WR(uint8_t regNum, uint8_t *tx_data){
+	if(HAL_I2C_Mem_Write(hi2c, DEFAULT_I2C_ADDRESS, regNum << 2, I2C_MEMADD_SIZE_16BIT, tx_data, 1, HAL_MAX_DELAY) != HAL_OK){
 		return false;
 	}
 	return true;
 }
-bool MLX90393::mlx90393_i2c_RR(uint8_t reg){
-	if(HAL_I2C_Mem_Write(&hi2c3, DEFAULT_I2C_ADDRESS, reg << 2, I2C_MEMADD_SIZE_16BIT, &reg.val, 1, HAL_MAX_DELAY) != HAL_OK){
+bool MLX90393::mlx90393_i2c_RR(uint8_t regNum){
+	uint8_t regVal[2];
+	if(HAL_I2C_Mem_Read(hi2c, DEFAULT_I2C_ADDRESS, regNum << 2, I2C_MEMADD_SIZE_16BIT, regVal, 1, HAL_MAX_DELAY) != HAL_OK){
 		return false;
 	}
+	reg.val = regVal[0] << 8 | regVal[1];
 	return true;
 }
 
@@ -77,7 +88,10 @@ bool MLX90393::mlx90393_set_gain(uint8_t gain){
 	uint16_t data = reg.val & ~MLX90393_GAIN_MASK;
 	data |= gain << MLX90393_GAIN_SHIFT;
 	reg.gain = gain;
-	return(mlx90393_i2c_WR(MLX90393_CONF1, &data));
+	uint8_t buf[2];
+	buf[0] = data >> 8 & 0xFF;
+	buf[1] = data & 0xff;
+	return(mlx90393_i2c_WR(MLX90393_CONF1, buf));
 }
 
 bool MLX90393::mlx90393_get_gain(){
@@ -112,7 +126,10 @@ bool MLX90393::mlx90393_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_r
 	if(z_res != 0){
 		data = (data & ~MLX90393_Z_RES_MASK) | (z_res << MLX90393_Z_RES_SHIFT);
 	}
-	return(mlx90393_i2c_WR(MLX90393_CONF3, &data));
+	uint8_t buf[2];
+	buf[0] = data >> 8 & 0xFF;
+	buf[1] = data & 0xff;
+	return(mlx90393_i2c_WR(MLX90393_CONF3, buf));
 }
 
 
@@ -147,14 +164,18 @@ bool MLX90393::mlx90393_set_filter(uint8_t filter){
 	reg.filter = filter;
 	uint16_t data = reg.val;
 	data = (data & ~MLX90393_FILTER_MASK) | (filter << MLX90393_FILTER_SHIFT);
-	return(mlx90393_i2c_WR(MLX90393_CONF3, &data));
+	uint8_t buf[2];
+	buf[0] = data >> 8 & 0xFF;
+	buf[1] = data & 0xff;
+	return(mlx90393_i2c_WR(MLX90393_CONF3, buf));
 
 }
 bool MLX90393::mlx90393_get_filter(){
 	if(!mlx90393_i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
-	reg.filter = (data & MLX90393_X_FILTER_MASK) >> MLX90393_FILTER_SHIFT;
+	uint16_t data = reg.val;
+	reg.filter = (data & MLX90393_FILTER_MASK) >> MLX90393_FILTER_SHIFT;
 	return true;
 }
 bool MLX90393::mlx90393_set_oversampling(uint8_t osr){
@@ -176,20 +197,20 @@ bool MLX90393::mlx90393_set_oversampling(uint8_t osr){
 	}
 	reg.osr = osr;
 	uint16_t data = reg.val;
-	data = (data & ~MLX90393_OSR_MASK) | (filter << MLX90393_OSR_SHIFT);
-	return(mlx90393_i2c_WR(MLX90393_CONF3, &data));
+	data = (data & ~MLX90393_OSR_MASK) | (reg.filter << MLX90393_OSR_SHIFT);
+	uint8_t buf[2];
+	buf[0] = data >> 8 & 0xFF;
+	buf[1] = data & 0xff;
+	return(mlx90393_i2c_WR(MLX90393_CONF3, buf));
 }
 
 bool MLX90393::mlx90393_get_oversampling(){
 	if(!mlx90393_i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
-	reg.osr = (data & MLX90393_X_OSR_MASK) >> MLX90393_OSR_SHIFT;
+	uint16_t data = reg.val;
+	reg.osr = (data & MLX90393_OSR_MASK) >> MLX90393_OSR_SHIFT;
 	return true;
-}
-
-bool MLX90393::mlx90393_has_error(){
-	return (reg.stat & ERROR_BIT) != 0;
 }
 
 int MLX90393::mlx90393_zyxt_set_bits(uint8_t zyxt){
@@ -198,12 +219,12 @@ int MLX90393::mlx90393_zyxt_set_bits(uint8_t zyxt){
 		if(zyxt & 0x1){
 			count++;
 		}
-		zyxt >> 1;
+		zyxt >>= 1;
 	}
 	return count;
 }
 
-void MLX90393::mlx90393_decode(uint8_t *rx_data, u8int_t zyxt){
+void MLX90393::mlx90393_decode(uint8_t *rx_data, uint8_t zyxt){
 	uint8_t *cursor = rx_data;
 	reg.stat = rx_data[0];
 	cursor += 1; //Skip status byte
@@ -253,14 +274,14 @@ void MLX90393::mlx90393_convert(){
 
 	//Check if temperature compensation is enabled. See 16.2.10
 	//Convert raw data base on sensitivity
-	if(re.tcmp_en == 0){
-		converted.x = (float)raw.x * sens_lookup_0xC[reg.gain][reg.rex_x][0];
-		converted.y = (float)raw.y * sens_lookup_0xC[reg.gain][reg.rex_y][0];
-		converted.z = (float)raw.z * sens_lookup_0xC[reg.gain][reg.rex_z][1];
+	if(reg.tcmp_en == 0){
+		converted.x = (float)raw.x * sens_lookup_0xC[reg.gain][reg.x_res][0];
+		converted.y = (float)raw.y * sens_lookup_0xC[reg.gain][reg.y_res][0];
+		converted.z = (float)raw.z * sens_lookup_0xC[reg.gain][reg.z_res][1];
 	}else{
-		converted.x = (float)((uint16_t)raw.x * sens_lookup_0xC[reg.gain][reg.rex_x][0]);
-		converted.y = (float)((uint16_t)raw.y * sens_lookup_0xC[reg.gain][reg.rex_y][0]);
-		converted.z = (float)((uint16_t)raw.z * sens_lookup_0xC[reg.gain][reg.rex_z][1]);
+		converted.x = (float)((uint16_t)raw.x * sens_lookup_0xC[reg.gain][reg.x_res][0]);
+		converted.y = (float)((uint16_t)raw.y * sens_lookup_0xC[reg.gain][reg.y_res][0]);
+		converted.z = (float)((uint16_t)raw.z * sens_lookup_0xC[reg.gain][reg.z_res][1]);
 	}
 
 	//Check hall config, see 16.2.4
