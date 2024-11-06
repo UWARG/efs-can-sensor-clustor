@@ -1,0 +1,9 @@
+../Core/Src/range_sensor.cpp:55:6:void Rangefinder::cleanup()	2
+../Core/Src/range_sensor.cpp:72:6:void Rangefinder::set_config(acc_detector_distance_config_t*, distance_preset_config_t)	5
+../Core/Src/range_sensor.cpp:110:6:bool Rangefinder::initialize_detector_resources()	5
+../Core/Src/range_sensor.cpp:143:6:bool Rangefinder::do_sensor_calibration(acc_sensor_t*, void*, uint32_t)	8
+../Core/Src/range_sensor.cpp:180:6:bool Rangefinder::do_full_detector_calibration()	5
+../Core/Src/range_sensor.cpp:207:6:bool Rangefinder::do_detector_calibration_update()	5
+../Core/Src/range_sensor.cpp:232:6:bool Rangefinder::do_detector_get_next(acc_detector_distance_result_t*)	7
+../Core/Src/range_sensor.cpp:276:6:void Rangefinder::print_distance_result(const acc_detector_distance_result_t*)	7
+../Core/Src/range_sensor.cpp:292:1:Rangefinder::Rangefinder()	1

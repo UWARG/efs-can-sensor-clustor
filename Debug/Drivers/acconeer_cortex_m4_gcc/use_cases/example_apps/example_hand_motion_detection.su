@@ -1,0 +1,15 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:63:33:hand_motion_detection_config_create	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:81:6:hand_motion_detection_config_destroy	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:94:6:hand_motion_detection_set_config	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:135:33:hand_motion_detection_handle_create	32	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:196:6:hand_motion_detection_handle_destroy	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:229:6:hand_motion_detection_config_log	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:258:6:hand_motion_detection_get_buffer_size	32	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:284:6:hand_motion_detection_prepare	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:311:6:hand_motion_detection_process	104	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:343:13:reinit_hand_motion_detection_state	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:350:13:set_sensor_config	56	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:400:13:set_processing_config	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:420:48:process_presence_processing_result	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:444:13:determine_app_mode	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:480:13:swap_app_mode	16	static

@@ -1,0 +1,4 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration_main.c:62:5:acc_example_vibration_main	144	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration_main.c:207:13:do_sensor_calibration_and_prepare	232	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration_main.c:245:13:print_result	152	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration_main.c:287:13:cleanup	24	static

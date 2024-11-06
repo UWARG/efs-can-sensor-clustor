@@ -1,0 +1,17 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:115:6:acc_vibration_preset_set	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:170:6:acc_vibration_config_log	34
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:233:25:acc_vibration_handle_create	18
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:350:21:acc_vibration_handle_sensor_config_get	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:355:14:acc_vibration_handle_displacement_history_get	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:369:6:acc_vibration_handle_continuous_data_acquisition_get	2
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:381:6:acc_vibration_handle_destroy	10
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:437:6:acc_vibration_process	11
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:558:13:circular_float_buffer_write_angle	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:568:14:circular_float_buffer_get	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:580:13:validate_config	6
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:612:13:translate_config	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:669:13:setup_sample_frequencies	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:676:13:update_vibration_result	5
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:715:15:get_zero_mean_time_series	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:734:13:calculate_threshold	5
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_vibration.c:799:13:setup_rfft_bounds	3

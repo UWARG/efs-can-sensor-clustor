@@ -1,0 +1,17 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:204:5:acc_ref_app_smart_presence	448	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:357:13:swap_config	48	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:414:17:get_max_buffer_size	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:429:17:get_max_num_points	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:444:17:get_max_num_zones	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:459:13:initialize_wakeup_resources	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:486:13:initialize_application_resources	56	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:583:13:cleanup	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:639:13:initialize_sensor	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:651:13:sensor_prepare	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:669:13:sensor_calibration	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:709:13:detector_get_next	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:739:13:set_config	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:1028:16:process_inter_intra	72	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:1148:13:process_detector_result	48	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:1213:13:determine_config_swap	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_smart_presence.c:1269:13:print_result	32	static

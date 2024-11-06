@@ -1,0 +1,15 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:63:33:hand_motion_detection_config_create	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:81:6:hand_motion_detection_config_destroy	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:94:6:hand_motion_detection_set_config	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:135:33:hand_motion_detection_handle_create	8
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:196:6:hand_motion_detection_handle_destroy	7
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:229:6:hand_motion_detection_config_log	40
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:258:6:hand_motion_detection_get_buffer_size	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:284:6:hand_motion_detection_prepare	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:311:6:hand_motion_detection_process	2
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:343:13:reinit_hand_motion_detection_state	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:350:13:set_sensor_config	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:400:13:set_processing_config	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:420:48:process_presence_processing_result	5
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:444:13:determine_app_mode	7
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection.c:480:13:swap_app_mode	2

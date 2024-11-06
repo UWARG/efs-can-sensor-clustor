@@ -1,0 +1,4 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_waste_level_main.c:45:5:acc_example_waste_level_main	15
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_waste_level_main.c:196:13:cleanup	6
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_waste_level_main.c:231:13:do_sensor_calibration_and_prepare	8
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_waste_level_main.c:268:13:print_waste_level_result	6

@@ -1,0 +1,14 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:180:5:acc_ref_app_tank_level	424	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:308:13:cleanup	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:327:14:get_detector_start_m	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:333:14:get_detector_end_m	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:339:13:set_config	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:402:13:initialize_application_resources	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:457:13:sensor_calibration	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:496:13:full_detector_calibration	72	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:526:13:update_detector_calibration	48	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:554:13:detector_get_next	48	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:604:14:median	32	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:626:14:nanmean	32	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:643:13:process_detector_result	32	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_tank_level.c:719:13:print_result	32	static

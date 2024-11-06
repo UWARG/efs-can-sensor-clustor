@@ -1,0 +1,6 @@
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:15:6:acc_integration_sleep_ms	1
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:20:6:acc_integration_sleep_us	1
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:27:10:acc_integration_get_time	1
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:32:7:acc_integration_mem_alloc	1
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:37:7:acc_integration_mem_calloc	1
+../Drivers/acconeer_cortex_m4_gcc/integration/acc_integration_stm32.c:42:6:acc_integration_mem_free	1

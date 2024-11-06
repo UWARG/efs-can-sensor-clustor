@@ -1,0 +1,13 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:100:29:ref_app_breathing_config_create	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:143:6:ref_app_breathing_config_destroy	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:156:29:ref_app_breathing_create	22
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:265:6:ref_app_breathing_destroy	18
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:353:6:ref_app_breathing_get_buffer_size	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:358:6:ref_app_breathing_prepare	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:368:6:ref_app_breathing_process	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:399:13:validate_config	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:426:13:determine_state	7
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:450:13:update_presence_distance	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:467:13:reinit_breathing	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:490:13:perform_action_based_on_state	8
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing.c:555:13:process_breathing	16

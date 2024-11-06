@@ -1,0 +1,8 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:56:5:acc_ref_app_breathing_main	304	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:174:13:cleanup	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:197:13:set_config	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:217:13:sensor_calibration	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:256:13:measure	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:283:13:print_app_state	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:306:13:print_result	16	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_breathing_main.c:319:13:handle_indications	32	static

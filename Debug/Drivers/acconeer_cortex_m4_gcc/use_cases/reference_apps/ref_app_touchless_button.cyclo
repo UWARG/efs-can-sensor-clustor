@@ -1,0 +1,17 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:197:5:acc_ref_app_touchless_button	12
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:317:13:cleanup	15
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:393:13:set_config	5
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:473:13:validate_config	12
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:512:13:config_log	25
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:560:13:init_handle	23
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:628:14:get_threshold	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:633:13:reset_background	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:646:13:init_sensor	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:666:13:do_sensor_calibration_and_prepare	8
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:703:13:measure	4
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:731:13:calc_variance	6
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:790:13:check_count	3
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:805:13:update_background	1
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:822:13:get_detection	7
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:830:13:process	16
+../Drivers/acconeer_cortex_m4_gcc/use_cases/reference_apps/ref_app_touchless_button.c:955:13:print_result	5

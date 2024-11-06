@@ -1,0 +1,5 @@
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection_main.c:51:5:acc_example_hand_motion_detection_main	312	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection_main.c:186:13:cleanup	24	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection_main.c:212:13:do_sensor_calibration	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection_main.c:246:13:handle_indications	40	static
+../Drivers/acconeer_cortex_m4_gcc/use_cases/example_apps/example_hand_motion_detection_main.c:307:13:print_hand_motion_detection_result	16	static

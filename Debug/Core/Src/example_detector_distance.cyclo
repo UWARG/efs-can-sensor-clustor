@@ -1,0 +1,9 @@
+../Core/Src/example_detector_distance.c:90:5:acc_example_detector_distance	11
+../Core/Src/example_detector_distance.c:199:13:cleanup	2
+../Core/Src/example_detector_distance.c:216:13:set_config	5
+../Core/Src/example_detector_distance.c:253:13:initialize_detector_resources	5
+../Core/Src/example_detector_distance.c:285:13:do_sensor_calibration	8
+../Core/Src/example_detector_distance.c:319:13:do_full_detector_calibration	5
+../Core/Src/example_detector_distance.c:345:13:do_detector_calibration_update	5
+../Core/Src/example_detector_distance.c:369:13:do_detector_get_next	7
+../Core/Src/example_detector_distance.c:417:13:print_distance_result	7
