@@ -12,7 +12,7 @@
 #include "stm32l4xx_hal_i2c.h"
 #include <cstdint>
 
-#define DEFAULT_I2C_ADDRESS 0x0C << 1 //Set I2C address
+#define DEFAULT_I2C_ADDRESS 0x18 << 1 //Set I2C address
 #define CS GPIO_PIN_5 //Set CS pin
 // Flags to use with "zyxt" variables.
 #define MLX90393_T  0x01  // Temperature
@@ -95,24 +95,44 @@ const float sens_lookup_0xC[8][4][2] = {
 { { 0.150, 0.242 }, { 0.300, 0.484 }, { 0.601, 0.968 }, { 1.202, 1.936 } },
 };
 
+const float mlx90393_tconv[8][4] = {
+    /* DIG_FILT = 0 */
+    {1.27, 1.84, 3.00, 5.30},
+    /* DIG_FILT = 1 */
+    {1.46, 2.23, 3.76, 6.84},
+    /* DIG_FILT = 2 */
+    {1.84, 3.00, 5.30, 9.91},
+    /* DIG_FILT = 3 */
+    {2.61, 4.53, 8.37, 16.05},
+    /* DIG_FILT = 4 */
+    {4.15, 7.60, 14.52, 28.34},
+    /* DIG_FILT = 5 */
+    {7.22, 13.75, 26.80, 52.92},
+    /* DIG_FILT = 6 */
+    {13.36, 26.04, 51.38, 102.07},
+    /* DIG_FILT = 7 */
+    {25.65, 50.61, 100.53, 200.37},
+};
 
 class MLX90393{
 	public:
 		MLX90393(I2C_HandleTypeDef *hi2c);
-		bool mlx90393_i2c_SM(uint8_t *rx_data, uint8_t zyxt); //Start single measurement mode cmd
-		bool mlx90393_i2c_RM(uint8_t *rx_data, uint8_t zyxt); //Read measurement cmd
+		bool mlx90393_i2c_SM(); //Start single measurement mode cmd
+		bool mlx90393_i2c_RM(); //Read measurement cmd
 		bool mlx90393_i2c_EX(); //Exit mode cmd
 		bool mlx90393_i2c_RT(); //Reset cmd
 		bool mlx90393_i2c_WR(uint8_t reg, uint8_t *tx_data); //Write register cmd
 		bool mlx90393_i2c_RR(uint8_t reg); // Read register cmd
-		bool mlx90393_set_gain(uint8_t gain);
-		bool mlx90393_get_gain();
-		bool mlx90393_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res);
-		bool mlx90393_get_resolution();
-		bool mlx90393_set_filter(uint8_t filter);
-		bool mlx90393_get_filter();
-		bool mlx90393_set_oversampling(uint8_t osr);
-		bool mlx90393_get_oversampling();
+		bool mlx90393_i2c_set_gain(uint8_t gain);
+		bool mlx90393_i2c_get_gain();
+		bool mlx90393_i2c_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res);
+		bool mlx90393_i2c_get_resolution();
+		bool mlx90393_i2c_set_filter(uint8_t filter);
+		bool mlx90393_i2c_get_filter();
+		bool mlx90393_i2c_set_oversampling(uint8_t osr);
+		bool mlx90393_i2c_get_oversampling();
+		bool mlx90393_i2c_has_error();
+		bool mlx90393_i2c_read_data();
 
 	private:
 		struct RawData{
@@ -142,16 +162,18 @@ class MLX90393{
 			uint8_t osr;
 		};
 
-		struct RawData raw;
-		struct ConvertedData converted;
-		struct RegVal reg;
+		volatile struct RawData raw;
+		volatile struct ConvertedData converted;
+		volatile struct RegVal reg;
 		I2C_HandleTypeDef *hi2c;
+		uint8_t zyxt;
 
 		HAL_StatusTypeDef mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
-		void mlx90393_decode(uint8_t *rx_data, uint8_t zyxt);
+		void mlx90393_decode(uint8_t *rx_data);
 		void mlx90393_convert();
 		uint16_t mlx90393_decode_helper(uint8_t *data);
-		int mlx90393_zyxt_set_bits(uint8_t zyxt);
+		int mlx90393_zyxt_set_bits();
+		void mlx90393_set_zyxt(uint8_t set_zyxt);
 };
 
 #endif /* INC_MLX90393_I2C_HPP_ */
