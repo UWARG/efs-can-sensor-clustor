@@ -171,7 +171,7 @@ class MLX90393{
 		HAL_StatusTypeDef mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		void mlx90393_decode(uint8_t *rx_data);
 		void mlx90393_convert();
-		uint16_t mlx90393_decode_helper(uint8_t *data);
+		int16_t mlx90393_decode_helper(uint8_t *data);
 		int mlx90393_zyxt_set_bits();
 		void mlx90393_set_zyxt(uint8_t set_zyxt);
 };

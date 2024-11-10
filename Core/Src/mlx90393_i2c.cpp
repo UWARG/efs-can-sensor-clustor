@@ -21,18 +21,25 @@ MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
 	this->reg.tcmp_en = 0x00;
 	this->reg.filter = 0x00;
 	this->reg.osr = 0x00;
-	zyxt = 0x0F;
+	this->raw.t = 0;
+	this->raw.x = 0;
+	this->raw.y = 0;
+	this->raw.z = 0;
+	this->converted.t = 0;
+	this->converted.x = 0;
+	this->converted.y = 0;
+	this->converted.z = 0;
+	zyxt = 0x0E;
 }
 
 HAL_StatusTypeDef MLX90393::mlx90393_i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
 {
-	uint8_t rx_buf[rx_size + 2];
 	HAL_StatusTypeDef status;
 	status = HAL_I2C_Master_Transmit(hi2c, DEFAULT_I2C_ADDRESS, tx_data, tx_size, HAL_MAX_DELAY);
 	if(status != HAL_OK){
 		return status;
 	}
-	status = HAL_I2C_Master_Receive(hi2c, DEFAULT_I2C_ADDRESS, rx_buf, rx_size + 1, HAL_MAX_DELAY);
+	status = HAL_I2C_Master_Receive(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size, HAL_MAX_DELAY);
 	return status;
 }
 
@@ -46,10 +53,10 @@ bool MLX90393::mlx90393_i2c_SM()
 }
 
 bool MLX90393::mlx90393_i2c_RM(){
-	int rx_size = mlx90393_zyxt_set_bits() + 1;
+	int rx_size = 2 * mlx90393_zyxt_set_bits() + 1;
 	uint8_t rx_data[rx_size];
 	uint8_t tx_data = (uint8_t)CMD_READ_MEASUREMENT | this->zyxt;
-	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, rx_data, 1, 2 * rx_size + 1);
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, rx_data, 1, rx_size);
 	mlx90393_decode(rx_data);
 	mlx90393_convert();
 	return status == HAL_OK;
@@ -58,14 +65,15 @@ bool MLX90393::mlx90393_i2c_RM(){
 bool MLX90393::mlx90393_i2c_EX(){
 	uint8_t tx_data = CMD_EXIT;
 	uint8_t buf = 0x00;
-	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, &buf, 1, 0);
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, &buf, 1, 1);
 	this->reg.stat = buf;
 	return status == HAL_OK;
 }
 
 bool MLX90393::mlx90393_i2c_RT(){
 	uint8_t tx_data = CMD_RESET;
-	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, nullptr, 1, 0);
+	uint8_t buf = 0x00;
+	HAL_StatusTypeDef status = mlx90393_i2c_transceive(&tx_data, &buf, 1, 1);
 	return status == HAL_OK;
 }
 
@@ -265,7 +273,7 @@ void MLX90393::mlx90393_decode(uint8_t *rx_data){
 	}
 }
 
-uint16_t MLX90393::mlx90393_decode_helper(uint8_t *data){
+int16_t MLX90393::mlx90393_decode_helper(uint8_t *data){
 	return (data[0] << 8 | data[1]);
 }
 
