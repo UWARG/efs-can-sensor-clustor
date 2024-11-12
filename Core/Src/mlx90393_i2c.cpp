@@ -8,7 +8,7 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
 
-MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
+MLX90393::MLX90393(I2C_HandleTypeDef *hi2c, bool *flag){
 	this->hi2c = hi2c;
 	HAL_GPIO_WritePin(GPIOB, CS, GPIO_PIN_SET);
 	i2c_EX();
@@ -29,7 +29,8 @@ MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
 	this->converted.x = 0;
 	this->converted.y = 0;
 	this->converted.z = 0;
-	zyxt = 0x0E;
+	this->zyxt = 0x0E;
+	this->flag = flag;
 }
 
 HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
@@ -39,7 +40,9 @@ HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, u
 	if(status != HAL_OK){
 		return status;
 	}
-	status = HAL_I2C_Master_Receive(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size, HAL_MAX_DELAY);
+	status = HAL_I2C_Master_Receive_DMA(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size);
+	while(*(this->flag) != true){};
+	*(this->flag) = false;
 	return status;
 }
 

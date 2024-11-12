@@ -74,6 +74,20 @@
 #define MLX90393_RES_16 0x01
 #define MLX90393_RES_17 0x02
 #define MLX90393_RES_18 0x03
+//OSR selection
+#define MLX90393_OSR_0 0x00
+#define MLX90393_OSR_1 0x01
+#define MLX90393_OSR_2 0x02
+#define MLX90393_OSR_3 0x03
+//Filter Selection
+#define MLX90393_FILTER_0 0x00
+#define MLX90393_FILTER_1 0x01
+#define MLX90393_FILTER_2 0x02
+#define MLX90393_FILTER_3 0x03
+#define MLX90393_FILTER_4 0x04
+#define MLX90393_FILTER_5 0x05
+#define MLX90393_FILTER_6 0x06
+#define MLX90393_FILTER_7 0x07
 
 //See 16.2.4
 const float sens_lookup_0xC[8][4][2] = {
@@ -116,7 +130,7 @@ const float mlx90393_tconv[8][4] = {
 
 class MLX90393{
 	public:
-		MLX90393(I2C_HandleTypeDef *hi2c);
+		MLX90393(I2C_HandleTypeDef *hi2c, bool *flag);
 		bool i2c_SM(); //Start single measurement mode cmd
 		bool i2c_RM(); //Read measurement cmd
 		bool i2c_EX(); //Exit mode cmd
@@ -167,6 +181,7 @@ class MLX90393{
 		volatile struct RegVal reg;
 		I2C_HandleTypeDef *hi2c;
 		uint8_t zyxt;
+		bool *flag;
 
 		HAL_StatusTypeDef i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		void decode(uint8_t *rx_data);
