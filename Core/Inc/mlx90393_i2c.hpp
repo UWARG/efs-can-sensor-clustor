@@ -130,7 +130,7 @@ const float mlx90393_tconv[8][4] = {
 
 class MLX90393{
 	public:
-		MLX90393(I2C_HandleTypeDef *hi2c, bool *flag);
+		MLX90393(I2C_HandleTypeDef *hi2c);
 		bool i2c_SM(); //Start single measurement mode cmd
 		bool i2c_RM(); //Read measurement cmd
 		bool i2c_EX(); //Exit mode cmd
@@ -146,7 +146,12 @@ class MLX90393{
 		bool i2c_set_oversampling(uint8_t osr);
 		bool i2c_get_oversampling();
 		bool i2c_has_error();
-		bool i2c_read_data();
+		bool read_data();
+		bool get_rm_flag();
+		void set_update_flag(bool update);
+		bool read_update_flag();
+		void decode();
+		void convert();
 
 	private:
 		struct RawData{
@@ -181,14 +186,15 @@ class MLX90393{
 		volatile struct RegVal reg;
 		I2C_HandleTypeDef *hi2c;
 		uint8_t zyxt;
-		bool *flag;
+		bool rm_flag;
+		uint8_t rx_data[7];
+		bool mes_updated;
 
 		HAL_StatusTypeDef i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
-		void decode(uint8_t *rx_data);
-		void convert();
+		HAL_StatusTypeDef i2c_transceive_IT(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		int16_t decode_helper(uint8_t *data);
 		int zyxt_set_bits();
-		void set_zyxt(uint8_t set_zyxt);
+		void set_zyxt(uint8_t zyxt);
 };
 
 #endif /* INC_MLX90393_I2C_HPP_ */

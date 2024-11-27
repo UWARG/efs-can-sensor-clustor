@@ -8,7 +8,7 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
 
-MLX90393::MLX90393(I2C_HandleTypeDef *hi2c, bool *flag){
+MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
 	this->hi2c = hi2c;
 	HAL_GPIO_WritePin(GPIOB, CS, GPIO_PIN_SET);
 	i2c_EX();
@@ -30,7 +30,7 @@ MLX90393::MLX90393(I2C_HandleTypeDef *hi2c, bool *flag){
 	this->converted.y = 0;
 	this->converted.z = 0;
 	this->zyxt = 0x0E;
-	this->flag = flag;
+	this->rm_flag = false;
 }
 
 HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
@@ -40,52 +40,59 @@ HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, u
 	if(status != HAL_OK){
 		return status;
 	}
-	status = HAL_I2C_Master_Receive_DMA(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size);
-	while(*(this->flag) != true){};
-	*(this->flag) = false;
+	status = HAL_I2C_Master_Receive(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size, HAL_MAX_DELAY);
+	return status;
+}
+
+HAL_StatusTypeDef MLX90393::i2c_transceive_IT(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
+{
+	HAL_StatusTypeDef status;
+	status = HAL_I2C_Master_Transmit(hi2c, DEFAULT_I2C_ADDRESS, tx_data, tx_size, HAL_MAX_DELAY);
+	if(status != HAL_OK){
+		return status;
+	}
+	status = HAL_I2C_Master_Receive_IT(hi2c, DEFAULT_I2C_ADDRESS, rx_data, rx_size);
 	return status;
 }
 
 bool MLX90393::i2c_SM()
 {
+	this->rm_flag = false;
 	uint8_t tx_data = (uint8_t)CMD_START_MEASUREMENT | this->zyxt;
 	uint8_t buf = 0x00;
-	if(i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
-	this->reg.stat = buf;
 	return true;
 }
 
 bool MLX90393::i2c_RM(){
-	int rx_size = 2 * zyxt_set_bits() + 1;
-	uint8_t rx_data[rx_size];
+	this->rm_flag = true;
+	this->mes_updated = false;
 	uint8_t tx_data = (uint8_t)CMD_READ_MEASUREMENT | this->zyxt;
-	if(i2c_transceive(&tx_data, rx_data, 1, rx_size) != HAL_OK){
+	if(i2c_transceive_IT(&tx_data, this->rx_data, 1, 7) != HAL_OK){
 		return false;
 	}
-	decode(rx_data);
-	convert();
 	return true;
 }
 
 bool MLX90393::i2c_EX(){
+	this->rm_flag = false;
 	uint8_t tx_data = CMD_EXIT;
 	uint8_t buf = 0x00;
-	if(i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
-	this->reg.stat = buf;
 	return true;
 }
 
 bool MLX90393::i2c_RT(){
+	this->rm_flag = false;
 	uint8_t tx_data = CMD_RESET;
 	uint8_t buf = 0x00;
-	if(i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
-	this->reg.stat = buf;
 	return true;
 }
 
@@ -95,9 +102,9 @@ bool MLX90393::i2c_WR(uint8_t regNum, uint16_t tx_data){
 	if(i2c_transceive(tx, &buf, 4, 1) != HAL_OK){
 		return false;
 	}
-	this->reg.stat = buf;
 	return true;
 }
+
 bool MLX90393::i2c_RR(uint8_t regNum){
 	uint8_t tx_data[2] = {CMD_READ_REGISTER, (uint8_t)regNum << 2};
 	uint8_t rx_data[3];
@@ -233,15 +240,11 @@ bool MLX90393::i2c_has_error(){
 	return (this->reg.stat & ERROR_BIT) != 0;
 }
 
-bool MLX90393::i2c_read_data(){
-	if(!i2c_SM()){
+bool MLX90393::read_data(){
+	if(!this->i2c_SM()){
 		return false;
 	}
-	HAL_Delay(mlx90393_tconv[this->reg.filter][this->reg.osr] + 10);
-	if(!i2c_RM()){
-		return false;
-	}
-	return true;
+	return this->i2c_RM();
 }
 
 int MLX90393::zyxt_set_bits(){
@@ -256,9 +259,9 @@ int MLX90393::zyxt_set_bits(){
 	return count;
 }
 
-void MLX90393::decode(uint8_t *rx_data){
-	uint8_t *cursor = rx_data;
-	this->reg.stat = rx_data[0];
+void MLX90393::decode(){
+	uint8_t *cursor = this->rx_data;
+	this->reg.stat = this->rx_data[0];
 	cursor += 1; //Skip status byte
 	if(this->zyxt & MLX90393_T){
 		this->raw.t = decode_helper(cursor);
@@ -312,6 +315,18 @@ void MLX90393::convert(){
 
 }
 
-void MLX90393::set_zyxt(uint8_t set_zyxt){
-	this->zyxt = set_zyxt;
+void MLX90393::set_zyxt(uint8_t zyxt){
+	this->zyxt = zyxt;
+}
+
+bool MLX90393::get_rm_flag(){
+	return this->rm_flag;
+}
+
+void set_update_flag(bool update){
+	this->mes_updated = update;
+}
+
+bool read_update_flag(){
+	return this->mes_updated;
 }
