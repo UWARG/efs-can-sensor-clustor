@@ -11,8 +11,8 @@
 MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
 	this->hi2c = hi2c;
 	HAL_GPIO_WritePin(GPIOB, CS, GPIO_PIN_SET);
-	i2c_EX();
-	i2c_RT();
+	this->i2c_EX();
+	this->i2c_RT();
 	this->reg.gain = MLX90393_GAIN_1X;
 	this->reg.x_res = MLX90393_RES_15;
 	this->reg.y_res = MLX90393_RES_15;
@@ -60,7 +60,7 @@ bool MLX90393::i2c_SM()
 	this->rm_flag = false;
 	uint8_t tx_data = (uint8_t)CMD_START_MEASUREMENT | this->zyxt;
 	uint8_t buf = 0x00;
-	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(this->i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
 	return true;
@@ -70,7 +70,7 @@ bool MLX90393::i2c_RM(){
 	this->rm_flag = true;
 	this->mes_updated = false;
 	uint8_t tx_data = (uint8_t)CMD_READ_MEASUREMENT | this->zyxt;
-	if(i2c_transceive_IT(&tx_data, this->rx_data, 1, 7) != HAL_OK){
+	if(this->i2c_transceive_IT(&tx_data, this->rx_data, 1, 7) != HAL_OK){
 		return false;
 	}
 	return true;
@@ -80,7 +80,7 @@ bool MLX90393::i2c_EX(){
 	this->rm_flag = false;
 	uint8_t tx_data = CMD_EXIT;
 	uint8_t buf = 0x00;
-	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(this->i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
 	return true;
@@ -90,7 +90,7 @@ bool MLX90393::i2c_RT(){
 	this->rm_flag = false;
 	uint8_t tx_data = CMD_RESET;
 	uint8_t buf = 0x00;
-	if(i2c_transceive_IT(&tx_data, &buf, 1, 1) != HAL_OK){
+	if(this->i2c_transceive(&tx_data, &buf, 1, 1) != HAL_OK){
 		return false;
 	}
 	return true;
@@ -99,7 +99,7 @@ bool MLX90393::i2c_RT(){
 bool MLX90393::i2c_WR(uint8_t regNum, uint16_t tx_data){
 	uint8_t tx[4] = {CMD_WRITE_REGISTER, (uint8_t)(tx_data >> 8), (uint8_t)(tx_data & 0xFF), (uint8_t)regNum << 2};
 	uint8_t buf = 0x00;
-	if(i2c_transceive(tx, &buf, 4, 1) != HAL_OK){
+	if(this->i2c_transceive(tx, &buf, 4, 1) != HAL_OK){
 		return false;
 	}
 	return true;
@@ -108,7 +108,7 @@ bool MLX90393::i2c_WR(uint8_t regNum, uint16_t tx_data){
 bool MLX90393::i2c_RR(uint8_t regNum){
 	uint8_t tx_data[2] = {CMD_READ_REGISTER, (uint8_t)regNum << 2};
 	uint8_t rx_data[3];
-	if(i2c_transceive(tx_data, rx_data, 2, 3) != HAL_OK){
+	if(this->i2c_transceive(tx_data, rx_data, 2, 3) != HAL_OK){
 		return false;
 	}
 	this->reg.stat = rx_data[0];
@@ -117,17 +117,17 @@ bool MLX90393::i2c_RR(uint8_t regNum){
 }
 
 bool MLX90393::i2c_set_gain(uint8_t gain){
-	if(!i2c_RR(MLX90393_CONF1)){
+	if(!this->i2c_RR(MLX90393_CONF1)){
 		return false;
 	}
 	uint16_t data = this->reg.val & ~MLX90393_GAIN_MASK;
 	data |= gain << MLX90393_GAIN_SHIFT;
 	this->reg.gain = gain;
-	return(i2c_WR(MLX90393_CONF1, data));
+	return(this->i2c_WR(MLX90393_CONF1, data));
 }
 
 bool MLX90393::i2c_get_gain(){
-	if(!i2c_RR(MLX90393_CONF1)){
+	if(!this->i2c_RR(MLX90393_CONF1)){
 		return false;
 	}
 	uint16_t data = reg.val & MLX90393_GAIN_MASK;
@@ -136,7 +136,7 @@ bool MLX90393::i2c_get_gain(){
 }
 
 bool MLX90393::i2c_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res){
-	if(!i2c_RR(MLX90393_CONF3)){
+	if(!this->i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
 	//Res 2 and 3 not allowed if temperature compensation enabled. See 16.2.10
@@ -158,7 +158,7 @@ bool MLX90393::i2c_set_resolution(uint8_t x_res, uint8_t y_res, uint8_t z_res){
 	if(z_res != 0){
 		data = (data & ~MLX90393_Z_RES_MASK) | (z_res << MLX90393_Z_RES_SHIFT);
 	}
-	return(i2c_WR(MLX90393_CONF3, data));
+	return(this->i2c_WR(MLX90393_CONF3, data));
 }
 
 
@@ -174,7 +174,7 @@ bool MLX90393::i2c_get_resolution(){
 }
 
 bool MLX90393::i2c_set_filter(uint8_t filter){
-	if(!i2c_RR(MLX90393_CONF3)){
+	if(!this->i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
 	//Not permitted settings see 16.2.5
@@ -193,11 +193,11 @@ bool MLX90393::i2c_set_filter(uint8_t filter){
 	this->reg.filter = filter;
 	uint16_t data = this->reg.val;
 	data = (data & ~MLX90393_FILTER_MASK) | (filter << MLX90393_FILTER_SHIFT);
-	return(i2c_WR(MLX90393_CONF3, data));
+	return(this->i2c_WR(MLX90393_CONF3, data));
 
 }
 bool MLX90393::i2c_get_filter(){
-	if(!i2c_RR(MLX90393_CONF3)){
+	if(!this->i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
 	uint16_t data = this->reg.val;
@@ -205,7 +205,7 @@ bool MLX90393::i2c_get_filter(){
 	return true;
 }
 bool MLX90393::i2c_set_oversampling(uint8_t osr){
-	if(!i2c_RR(MLX90393_CONF3)){
+	if(!this->i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
 	//Not permitted settings see 16.2.5
@@ -224,11 +224,11 @@ bool MLX90393::i2c_set_oversampling(uint8_t osr){
 	this->reg.osr = osr;
 	uint16_t data = this->reg.val;
 	data = (data & ~MLX90393_OSR_MASK) | (this->reg.filter << MLX90393_OSR_SHIFT);
-	return(i2c_WR(MLX90393_CONF3, data));
+	return(this->i2c_WR(MLX90393_CONF3, data));
 }
 
 bool MLX90393::i2c_get_oversampling(){
-	if(!i2c_RR(MLX90393_CONF3)){
+	if(!this->i2c_RR(MLX90393_CONF3)){
 		return false;
 	}
 	uint16_t data = this->reg.val;
@@ -323,10 +323,22 @@ bool MLX90393::get_rm_flag(){
 	return this->rm_flag;
 }
 
-void set_update_flag(bool update){
+void MLX90393::set_update_flag(bool update){
 	this->mes_updated = update;
 }
 
-bool read_update_flag(){
+bool MLX90393::read_update_flag(){
 	return this->mes_updated;
+}
+
+float MLX90393::get_x_data(){
+	return this->converted.x;
+}
+
+float MLX90393::get_y_data(){
+	return this->converted.y;
+}
+
+float MLX90393::get_z_data(){
+	return this->converted.z;
 }

@@ -152,6 +152,9 @@ class MLX90393{
 		bool read_update_flag();
 		void decode();
 		void convert();
+		float get_x_data();
+		float get_y_data();
+		float get_z_data();
 
 	private:
 		struct RawData{
