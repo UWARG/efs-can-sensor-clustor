@@ -31,17 +31,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ICP20100_ADDR 0x0C << 1 // shifted left for 7-bit addressing
-//do i use reset address or another address?
-
-// Register addresses
-#define MODE_SELECT_REG 0xC0
-#define INTERRUPT_MASK_REG 0xC2
-#define PRESS_ABS_LSB_REG 0xC7
-
-// Mode and Interrupt configurations
-#define MODE_SELECT_CONTINUOUS 0x8B // 10001011 in binary
-#define INTERRUPT_MASK_PRESSURE_READY 0x47 // 10001111 in binary
 
 /* USER CODE END PD */
 
@@ -66,27 +55,6 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_I2C1_Init(void);
 
-void ICP20100_Init(void){
-	uint8_t data;
-
-	data = MODE_SELECT_CONTINUOUS;
-	HAL_I2C_Mem_Write(&hi2c1, ICP20100_ADDR, MODE_SELECT_REG, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
-
-
-	data = INTERRUPT_MASK_PRESSURE_READY;
-	HAL_I2C_Mem_Write(&hi2c1, ICP20100_ADDR, INTERRUPT_MASK_REG, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
-}
-
-uint16_t ICP20100_ReadPressure(void){
-	uint8_t pressure_data[3];  // Buffer to hold 3 bytes of pressure data
-
-	HAL_I2C_Mem_Read(&hi2c1, ICP20100_ADDR, PRESS_ABS_LSB_REG, I2C_MEMADD_SIZE_8BIT, pressure_data, 3, HAL_MAX_DELAY);
-
-
-	uint32_t pressure = (pressure_data[0] << 16) | (pressure_data[1] << 8) | pressure_data[2];
-
-	return pressure;
-}
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -104,7 +72,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	//need mem_read and mem_write functions
+
 
   /* USER CODE END 1 */
 
@@ -129,7 +97,7 @@ int main(void)
   MX_DMA_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  ICP20100_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -139,9 +107,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  uint16_t pressure = ICP20100_ReadPressure();
-
-	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

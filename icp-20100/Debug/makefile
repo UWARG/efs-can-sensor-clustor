@@ -60,8 +60,8 @@ all: main-build
 main-build: icp-20100.elf secondary-outputs
 
 # Tool invocations
-icp-20100.elf icp-20100.map: $(OBJS) $(USER_OBJS) C:\Users\emmao\STM32CubeIDE\workspace_1.16.0\icp-20100\STM32L4P5CETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "icp-20100.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emmao\STM32CubeIDE\workspace_1.16.0\icp-20100\STM32L4P5CETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="icp-20100.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+icp-20100.elf icp-20100.map: $(OBJS) $(USER_OBJS) C:\Users\emmao\Desktop\WARG\ GIT\efs-can-sensor-clustor\icp-20100\STM32L4P5CETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "icp-20100.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emmao\Desktop\WARG GIT\efs-can-sensor-clustor\icp-20100\STM32L4P5CETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="icp-20100.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
