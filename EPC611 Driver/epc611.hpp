@@ -34,22 +34,35 @@ const uint16_t EPC_PAGE_RESPONSE = 0x8000;
 
 const uint32_t SPI_TIMEOUT = 10; // ms
 
+const int UHD_READOUT[8] = {3,4,2,5,1,6,0,7}; // UHD readout is in a weird order
+
+enum EPCMode { // [TODO] Implement a use for the mode so it can all be done by 1 function
+	NONE,
+	TIM,
+	UHD
+};
+
 class EPC611 {
 	public:
 
 		EPC611(SPI_HandleTypeDef *spi, SPI_HandleTypeDef *nss_gpio_type, uint16_t nss_pin_out, SPI_HandleTypeDef *data_rdy_gpio_type, uint16_t data_rdy_pin_out);
 
-		uint8_t sendRecv(uint16_t data);
+		uint16_t sendRecv(uint16_t data);
 		uint16_t write(uint8_t data,uint8_t address);
 		uint16_t read(uint8_t address);
 		uint16_t pageSelect(uint8_t page);
 		uint16_t reset();
 		uint16_t quit();
 		uint16_t nop();
-		uint16_t poll(uint16_t last_response, int attempts);
+		uint16_t poll(uint16_t data);
 		void startTIM();
+		void startUHD();
+		void getFrameUHD(uint16_t DCS_frames[][8]);
+
+		bool dataReady();
 
 	private:
+		enum EPCMode mode = NONE; // [TODO] Add a function that uses this to determine what type of frames to grab
 		SPI_HandleTypeDef *epc_spi;
 
 		GPIO_TypeDef *gpio_nss;
