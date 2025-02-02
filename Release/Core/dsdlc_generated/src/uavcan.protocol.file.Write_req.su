@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.Write_req.c:14:10:uavcan_protocol_file_WriteRequest_encode	32	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.Write_req.c:34:6:uavcan_protocol_file_WriteRequest_decode	32	static

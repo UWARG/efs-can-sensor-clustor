@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.Panic.h:61:6:_uavcan_protocol_Panic_encode	3
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.Panic.h:108:6:_uavcan_protocol_Panic_decode	4
+../Core/dsdlc_generated/src/uavcan.protocol.Panic.c:12:10:uavcan_protocol_Panic_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.Panic.c:32:6:uavcan_protocol_Panic_decode	2

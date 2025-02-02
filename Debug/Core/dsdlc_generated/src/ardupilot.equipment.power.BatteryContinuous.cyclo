@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryContinuous.h:127:6:_ardupilot_equipment_power_BatteryContinuous_encode	1
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryContinuous.h:236:6:_ardupilot_equipment_power_BatteryContinuous_decode	1
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryContinuous.c:12:10:ardupilot_equipment_power_BatteryContinuous_encode	1
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryContinuous.c:32:6:ardupilot_equipment_power_BatteryContinuous_decode	2

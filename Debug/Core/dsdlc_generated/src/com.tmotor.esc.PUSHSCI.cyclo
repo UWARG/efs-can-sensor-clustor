@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.PUSHSCI.h:59:6:_com_tmotor_esc_PUSHSCI_encode	3
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.PUSHSCI.h:115:6:_com_tmotor_esc_PUSHSCI_decode	3
+../Core/dsdlc_generated/src/com.tmotor.esc.PUSHSCI.c:12:10:com_tmotor_esc_PUSHSCI_encode	1
+../Core/dsdlc_generated/src/com.tmotor.esc.PUSHSCI.c:32:6:com_tmotor_esc_PUSHSCI_decode	2

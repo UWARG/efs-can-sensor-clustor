@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.GetDataTypeInfo_req.c:14:10:uavcan_protocol_GetDataTypeInfoRequest_encode	2
+../Core/dsdlc_generated/src/uavcan.protocol.GetDataTypeInfo_req.c:34:6:uavcan_protocol_GetDataTypeInfoRequest_decode	3

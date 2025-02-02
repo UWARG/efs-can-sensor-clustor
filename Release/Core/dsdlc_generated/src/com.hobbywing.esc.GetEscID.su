@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetEscID.c:12:10:com_hobbywing_esc_GetEscID_encode	24	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetEscID.c:32:6:com_hobbywing_esc_GetEscID_decode	24	static

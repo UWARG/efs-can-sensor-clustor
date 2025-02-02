@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.sensors.magnetometer.MagneticFieldStrengthHiRes.c:12:10:dronecan_sensors_magnetometer_MagneticFieldStrengthHiRes_encode	16	static
+../Core/dsdlc_generated/src/dronecan.sensors.magnetometer.MagneticFieldStrengthHiRes.c:32:6:dronecan_sensors_magnetometer_MagneticFieldStrengthHiRes_decode	24	static

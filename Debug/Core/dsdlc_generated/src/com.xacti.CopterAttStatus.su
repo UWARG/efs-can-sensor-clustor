@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.xacti.CopterAttStatus.h:59:6:_com_xacti_CopterAttStatus_encode	40	static
+../Core/dsdlc_generated/src/../inc/com.xacti.CopterAttStatus.h:126:6:_com_xacti_CopterAttStatus_decode	48	static
+../Core/dsdlc_generated/src/com.xacti.CopterAttStatus.c:12:10:com_xacti_CopterAttStatus_encode	24	static
+../Core/dsdlc_generated/src/com.xacti.CopterAttStatus.c:32:6:com_xacti_CopterAttStatus_decode	24	static

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.remoteid.SelfID.c:12:10:dronecan_remoteid_SelfID_encode	32	static
+../Core/dsdlc_generated/src/dronecan.remoteid.SelfID.c:32:6:dronecan_remoteid_SelfID_decode	32	static

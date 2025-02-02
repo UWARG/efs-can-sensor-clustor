@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.navigation.GlobalNavigationSolution.c:12:10:uavcan_navigation_GlobalNavigationSolution_encode	40	static
+../Core/dsdlc_generated/src/uavcan.navigation.GlobalNavigationSolution.c:32:6:uavcan_navigation_GlobalNavigationSolution_decode	48	static

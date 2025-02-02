@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/mppt.OutputEnable_req.c:14:10:mppt_OutputEnableRequest_encode	16	static
+../Core/dsdlc_generated/src/mppt.OutputEnable_req.c:34:6:mppt_OutputEnableRequest_decode	24	static

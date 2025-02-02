@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.indication.NotifyState.h:115:6:_ardupilot_indication_NotifyState_encode	2
+../Core/dsdlc_generated/src/../inc/ardupilot.indication.NotifyState.h:174:6:_ardupilot_indication_NotifyState_decode	2
+../Core/dsdlc_generated/src/ardupilot.indication.NotifyState.c:12:10:ardupilot_indication_NotifyState_encode	1
+../Core/dsdlc_generated/src/ardupilot.indication.NotifyState.c:32:6:ardupilot_indication_NotifyState_decode	2

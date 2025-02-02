@@ -1,0 +1,18 @@
+../Core/Src/main.cpp:71:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	3
+../Core/Src/main.cpp:89:6:void setupCANFilter(CAN_HandleTypeDef*)	1
+../Core/Src/main.cpp:106:5:int clock_gettime(clockid_t, timespec*)	2
+../Core/Src/main.cpp:121:6:void handle_NodeStatus(CanardInstance*, CanardRxTransfer*)	11
+../Core/Src/main.cpp:174:6:void handle_NotifyState(CanardInstance*, CanardRxTransfer*)	4
+../Core/Src/main.cpp:201:6:void handle_GetNodeInfo(CanardInstance*, CanardRxTransfer*)	1
+../Core/Src/main.cpp:247:6:void send_NodeStatus()	1
+../Core/Src/main.cpp:274:6:void send_MLX90393()	1
+../Core/Src/main.cpp:312:6:bool shouldAcceptTransfer(const CanardInstance*, uint64_t*, uint16_t, CanardTransferType, uint8_t)	6
+../Core/Src/main.cpp:349:6:void onTransferReceived(CanardInstance*, CanardRxTransfer*)	6
+../Core/Src/main.cpp:390:6:void processCanardTxQueue(CAN_HandleTypeDef*)	4
+../Core/Src/main.cpp:410:6:void process1HzTasks(uint64_t)	1
+../Core/Src/main.cpp:430:5:int main()	3
+../Core/Src/main.cpp:509:6:void SystemClock_Config()	4
+../Core/Src/main.cpp:549:6:void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef*)	3
+../Core/Src/main.cpp:562:6:void Error_Handler()	1
+../Core/Src/main.cpp:571:1:void __static_initialization_and_destruction_0(int, int)	3
+../Core/Src/main.cpp:571:1:cpp)	1

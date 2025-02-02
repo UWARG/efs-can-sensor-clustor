@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryCells.h:59:6:_ardupilot_equipment_power_BatteryCells_encode	40	static
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryCells.h:112:6:_ardupilot_equipment_power_BatteryCells_decode	40	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryCells.c:12:10:ardupilot_equipment_power_BatteryCells_encode	24	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryCells.c:32:6:ardupilot_equipment_power_BatteryCells_decode	24	static

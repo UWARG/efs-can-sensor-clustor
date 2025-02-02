@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetMajorConfig_res.c:12:10:com_hobbywing_esc_GetMajorConfigResponse_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetMajorConfig_res.c:32:6:com_hobbywing_esc_GetMajorConfigResponse_decode	1

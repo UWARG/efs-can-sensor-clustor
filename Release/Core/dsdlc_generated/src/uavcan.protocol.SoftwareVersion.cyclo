@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.SoftwareVersion.c:12:10:uavcan_protocol_SoftwareVersion_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.SoftwareVersion.c:32:6:uavcan_protocol_SoftwareVersion_decode	1

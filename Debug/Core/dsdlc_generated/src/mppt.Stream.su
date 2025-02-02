@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/mppt.Stream.h:93:6:_mppt_Stream_encode	40	static
+../Core/dsdlc_generated/src/../inc/mppt.Stream.h:199:6:_mppt_Stream_decode	48	static
+../Core/dsdlc_generated/src/mppt.Stream.c:12:10:mppt_Stream_encode	24	static
+../Core/dsdlc_generated/src/mppt.Stream.c:32:6:mppt_Stream_decode	24	static

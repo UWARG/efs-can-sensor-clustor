@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.param.Empty.c:12:10:uavcan_protocol_param_Empty_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.param.Empty.c:32:6:uavcan_protocol_param_Empty_decode	1

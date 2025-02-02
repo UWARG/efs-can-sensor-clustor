@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.ice.reciprocating.Status.c:12:10:uavcan_equipment_ice_reciprocating_Status_encode	32	static
+../Core/dsdlc_generated/src/uavcan.equipment.ice.reciprocating.Status.c:32:6:uavcan_equipment_ice_reciprocating_Status_decode	48	static

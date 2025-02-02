@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.protocol.Stats.c:12:10:dronecan_protocol_Stats_encode	16	static
+../Core/dsdlc_generated/src/dronecan.protocol.Stats.c:32:6:dronecan_protocol_Stats_decode	24	static

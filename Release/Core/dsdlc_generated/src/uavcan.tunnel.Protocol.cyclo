@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.tunnel.Protocol.c:12:10:uavcan_tunnel_Protocol_encode	1
+../Core/dsdlc_generated/src/uavcan.tunnel.Protocol.c:32:6:uavcan_tunnel_Protocol_decode	1

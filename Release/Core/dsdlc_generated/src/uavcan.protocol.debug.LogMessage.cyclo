@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.debug.LogMessage.c:12:10:uavcan_protocol_debug_LogMessage_encode	3
+../Core/dsdlc_generated/src/uavcan.protocol.debug.LogMessage.c:32:6:uavcan_protocol_debug_LogMessage_decode	5

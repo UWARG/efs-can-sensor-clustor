@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.GlobalTimeSync.c:12:10:uavcan_protocol_GlobalTimeSync_encode	8	static
+../Core/dsdlc_generated/src/uavcan.protocol.GlobalTimeSync.c:32:6:uavcan_protocol_GlobalTimeSync_decode	16	static

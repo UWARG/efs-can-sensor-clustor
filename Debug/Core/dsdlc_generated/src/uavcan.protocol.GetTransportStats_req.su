@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.GetTransportStats_req.h:51:6:_uavcan_protocol_GetTransportStatsRequest_encode	24	static
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.GetTransportStats_req.h:67:6:_uavcan_protocol_GetTransportStatsRequest_decode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.GetTransportStats_req.c:14:10:uavcan_protocol_GetTransportStatsRequest_encode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.GetTransportStats_req.c:34:6:uavcan_protocol_GetTransportStatsRequest_decode	24	static

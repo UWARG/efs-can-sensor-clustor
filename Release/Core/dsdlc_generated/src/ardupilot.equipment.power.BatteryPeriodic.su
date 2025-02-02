@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryPeriodic.c:12:10:ardupilot_equipment_power_BatteryPeriodic_encode	48	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryPeriodic.c:32:6:ardupilot_equipment_power_BatteryPeriodic_decode	40	static

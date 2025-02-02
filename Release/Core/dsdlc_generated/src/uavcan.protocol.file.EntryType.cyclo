@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.EntryType.c:12:10:uavcan_protocol_file_EntryType_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.file.EntryType.c:32:6:uavcan_protocol_file_EntryType_decode	1

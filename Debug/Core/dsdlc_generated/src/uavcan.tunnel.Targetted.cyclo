@@ -1,0 +1,6 @@
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.tunnel.Protocol.h:55:6:_uavcan_tunnel_Protocol_encode	1
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.tunnel.Protocol.h:80:6:_uavcan_tunnel_Protocol_decode	1
+../Core/dsdlc_generated/src/../inc/uavcan.tunnel.Targetted.h:81:6:_uavcan_tunnel_Targetted_encode	3
+../Core/dsdlc_generated/src/../inc/uavcan.tunnel.Targetted.h:170:6:_uavcan_tunnel_Targetted_decode	5
+../Core/dsdlc_generated/src/uavcan.tunnel.Targetted.c:12:10:uavcan_tunnel_Targetted_encode	1
+../Core/dsdlc_generated/src/uavcan.tunnel.Targetted.c:32:6:uavcan_tunnel_Targetted_decode	2

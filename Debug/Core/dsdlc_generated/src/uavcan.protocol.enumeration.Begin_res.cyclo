@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.enumeration.Begin_res.h:67:6:_uavcan_protocol_enumeration_BeginResponse_encode	1
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.enumeration.Begin_res.h:92:6:_uavcan_protocol_enumeration_BeginResponse_decode	1
+../Core/dsdlc_generated/src/uavcan.protocol.enumeration.Begin_res.c:12:10:uavcan_protocol_enumeration_BeginResponse_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.enumeration.Begin_res.c:32:6:uavcan_protocol_enumeration_BeginResponse_decode	2

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.gnss.ECEFPositionVelocity.c:12:10:uavcan_equipment_gnss_ECEFPositionVelocity_encode	2
+../Core/dsdlc_generated/src/uavcan.equipment.gnss.ECEFPositionVelocity.c:32:6:uavcan_equipment_gnss_ECEFPositionVelocity_decode	4

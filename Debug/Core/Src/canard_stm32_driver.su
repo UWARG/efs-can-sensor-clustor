@@ -1,0 +1,3 @@
+../Core/Src/canard_stm32_driver.c:20:9:canardSTM32Recieve	64	static
+../Core/Src/canard_stm32_driver.c:71:9:canardSTM32Transmit	56	static
+../Core/Src/canard_stm32_driver.c:123:6:getUniqueID	32	static

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetReportingFrequency_req.c:14:10:com_hobbywing_esc_SetReportingFrequencyRequest_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetReportingFrequency_req.c:34:6:com_hobbywing_esc_SetReportingFrequencyRequest_decode	1

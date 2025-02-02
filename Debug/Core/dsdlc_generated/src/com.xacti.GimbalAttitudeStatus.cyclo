@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.xacti.GimbalAttitudeStatus.h:75:6:_com_xacti_GimbalAttitudeStatus_encode	1
+../Core/dsdlc_generated/src/../inc/com.xacti.GimbalAttitudeStatus.h:145:6:_com_xacti_GimbalAttitudeStatus_decode	1
+../Core/dsdlc_generated/src/com.xacti.GimbalAttitudeStatus.c:12:10:com_xacti_GimbalAttitudeStatus_encode	1
+../Core/dsdlc_generated/src/com.xacti.GimbalAttitudeStatus.c:32:6:com_xacti_GimbalAttitudeStatus_decode	2

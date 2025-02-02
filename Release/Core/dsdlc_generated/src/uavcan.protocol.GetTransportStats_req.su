@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.GetTransportStats_req.c:14:10:uavcan_protocol_GetTransportStatsRequest_encode	0	static
+../Core/dsdlc_generated/src/uavcan.protocol.GetTransportStats_req.c:34:6:uavcan_protocol_GetTransportStatsRequest_decode	0	static

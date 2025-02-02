@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.tunnel.SerialConfig.c:12:10:uavcan_tunnel_SerialConfig_encode	1
+../Core/dsdlc_generated/src/uavcan.tunnel.SerialConfig.c:32:6:uavcan_tunnel_SerialConfig_decode	1

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.indication.RGB565.c:12:10:uavcan_equipment_indication_RGB565_encode	16	static
+../Core/dsdlc_generated/src/uavcan.equipment.indication.RGB565.c:32:6:uavcan_equipment_indication_RGB565_decode	24	static

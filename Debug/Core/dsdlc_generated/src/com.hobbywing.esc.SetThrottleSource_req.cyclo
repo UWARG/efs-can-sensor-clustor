@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetThrottleSource_req.h:61:6:_com_hobbywing_esc_SetThrottleSourceRequest_encode	1
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetThrottleSource_req.h:86:6:_com_hobbywing_esc_SetThrottleSourceRequest_decode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetThrottleSource_req.c:14:10:com_hobbywing_esc_SetThrottleSourceRequest_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetThrottleSource_req.c:34:6:com_hobbywing_esc_SetThrottleSourceRequest_decode	2

@@ -1,0 +1,27 @@
+../Core/Src/mlx90393_i2c.cpp:36:19:HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t*, uint8_t*, uint16_t, uint16_t)	32	static
+../Core/Src/mlx90393_i2c.cpp:47:19:HAL_StatusTypeDef MLX90393::i2c_transceive_IT(uint8_t*, uint8_t*, uint16_t, uint16_t)	24	static
+../Core/Src/mlx90393_i2c.cpp:58:6:bool MLX90393::i2c_SM()	24	static
+../Core/Src/mlx90393_i2c.cpp:69:6:bool MLX90393::i2c_RM()	24	static
+../Core/Src/mlx90393_i2c.cpp:79:6:bool MLX90393::i2c_EX()	24	static
+../Core/Src/mlx90393_i2c.cpp:89:6:bool MLX90393::i2c_RT()	24	static
+../Core/Src/mlx90393_i2c.cpp:11:1:MLX90393::MLX90393(I2C_HandleTypeDef*)	8	static
+../Core/Src/mlx90393_i2c.cpp:99:6:bool MLX90393::i2c_WR(uint8_t, uint16_t)	24	static
+../Core/Src/mlx90393_i2c.cpp:108:6:bool MLX90393::i2c_RR(uint8_t)	24	static
+../Core/Src/mlx90393_i2c.cpp:119:6:bool MLX90393::i2c_set_gain(uint8_t)	16	static
+../Core/Src/mlx90393_i2c.cpp:129:6:bool MLX90393::i2c_get_gain()	8	static
+../Core/Src/mlx90393_i2c.cpp:138:6:bool MLX90393::i2c_set_resolution(uint8_t, uint8_t, uint8_t)	24	static
+../Core/Src/mlx90393_i2c.cpp:165:6:bool MLX90393::i2c_get_resolution()	8	static
+../Core/Src/mlx90393_i2c.cpp:176:6:bool MLX90393::i2c_set_filter(uint8_t)	16	static
+../Core/Src/mlx90393_i2c.cpp:199:6:bool MLX90393::i2c_get_filter()	8	static
+../Core/Src/mlx90393_i2c.cpp:207:6:bool MLX90393::i2c_set_oversampling(uint8_t)	16	static
+../Core/Src/mlx90393_i2c.cpp:230:6:bool MLX90393::i2c_get_oversampling()	8	static
+../Core/Src/mlx90393_i2c.cpp:239:6:bool MLX90393::i2c_has_error()	0	static
+../Core/Src/mlx90393_i2c.cpp:243:6:bool MLX90393::read_data()	8	static
+../Core/Src/mlx90393_i2c.cpp:250:5:int MLX90393::zyxt_set_bits()	0	static
+../Core/Src/mlx90393_i2c.cpp:262:6:void MLX90393::decode()	0	static
+../Core/Src/mlx90393_i2c.cpp:284:9:int16_t MLX90393::decode_helper(uint8_t*)	0	static
+../Core/Src/mlx90393_i2c.cpp:288:6:void MLX90393::convert()	0	static
+../Core/Src/mlx90393_i2c.cpp:318:6:void MLX90393::set_zyxt(uint8_t)	0	static
+../Core/Src/mlx90393_i2c.cpp:322:6:bool MLX90393::get_rm_flag()	0	static
+../Core/Src/mlx90393_i2c.cpp:326:6:void MLX90393::set_update_flag(bool)	0	static
+../Core/Src/mlx90393_i2c.cpp:330:6:bool MLX90393::read_update_flag()	0	static

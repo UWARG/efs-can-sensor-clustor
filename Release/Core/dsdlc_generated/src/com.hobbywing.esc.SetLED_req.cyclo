@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetLED_req.c:14:10:com_hobbywing_esc_SetLEDRequest_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetLED_req.c:34:6:com_hobbywing_esc_SetLEDRequest_decode	1

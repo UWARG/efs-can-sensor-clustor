@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.Read_res.c:12:10:uavcan_protocol_file_ReadResponse_encode	2
+../Core/dsdlc_generated/src/uavcan.protocol.file.Read_res.c:32:6:uavcan_protocol_file_ReadResponse_decode	3

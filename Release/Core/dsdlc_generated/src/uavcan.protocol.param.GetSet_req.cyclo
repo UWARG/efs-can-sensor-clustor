@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.param.GetSet_req.c:14:10:uavcan_protocol_param_GetSetRequest_encode	7
+../Core/dsdlc_generated/src/uavcan.protocol.param.GetSet_req.c:34:6:uavcan_protocol_param_GetSetRequest_decode	9

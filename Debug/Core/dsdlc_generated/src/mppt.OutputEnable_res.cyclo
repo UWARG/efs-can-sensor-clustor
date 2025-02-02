@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/mppt.OutputEnable_res.h:57:6:_mppt_OutputEnableResponse_encode	1
+../Core/dsdlc_generated/src/../inc/mppt.OutputEnable_res.h:88:6:_mppt_OutputEnableResponse_decode	1
+../Core/dsdlc_generated/src/mppt.OutputEnable_res.c:12:10:mppt_OutputEnableResponse_encode	1
+../Core/dsdlc_generated/src/mppt.OutputEnable_res.c:32:6:mppt_OutputEnableResponse_decode	2

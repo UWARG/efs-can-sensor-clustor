@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/ardupilot.indication.SafetyState.c:12:10:ardupilot_indication_SafetyState_encode	8	static
+../Core/dsdlc_generated/src/ardupilot.indication.SafetyState.c:32:6:ardupilot_indication_SafetyState_decode	16	static

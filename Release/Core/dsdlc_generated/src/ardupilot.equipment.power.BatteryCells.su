@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryCells.c:12:10:ardupilot_equipment_power_BatteryCells_encode	40	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryCells.c:32:6:ardupilot_equipment_power_BatteryCells_decode	48	static

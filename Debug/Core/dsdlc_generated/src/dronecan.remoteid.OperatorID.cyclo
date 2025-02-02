@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.OperatorID.h:67:6:_dronecan_remoteid_OperatorID_encode	4
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.OperatorID.h:148:6:_dronecan_remoteid_OperatorID_decode	6
+../Core/dsdlc_generated/src/dronecan.remoteid.OperatorID.c:12:10:dronecan_remoteid_OperatorID_encode	1
+../Core/dsdlc_generated/src/dronecan.remoteid.OperatorID.c:32:6:dronecan_remoteid_OperatorID_decode	2

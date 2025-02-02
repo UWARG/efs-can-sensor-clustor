@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.air_data.RawAirData.h:93:6:_uavcan_equipment_air_data_RawAirData_encode	3
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.air_data.RawAirData.h:218:6:_uavcan_equipment_air_data_RawAirData_decode	4
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.RawAirData.c:12:10:uavcan_equipment_air_data_RawAirData_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.RawAirData.c:32:6:uavcan_equipment_air_data_RawAirData_decode	2

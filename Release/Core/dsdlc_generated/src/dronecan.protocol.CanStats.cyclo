@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.protocol.CanStats.c:12:10:dronecan_protocol_CanStats_encode	1
+../Core/dsdlc_generated/src/dronecan.protocol.CanStats.c:32:6:dronecan_protocol_CanStats_decode	1

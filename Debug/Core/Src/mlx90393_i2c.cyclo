@@ -1,0 +1,30 @@
+../Core/Src/mlx90393_i2c.cpp:11:1:MLX90393::MLX90393(I2C_HandleTypeDef*)	1
+../Core/Src/mlx90393_i2c.cpp:38:19:HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t*, uint8_t*, uint16_t, uint16_t)	2
+../Core/Src/mlx90393_i2c.cpp:49:19:HAL_StatusTypeDef MLX90393::i2c_transceive_IT(uint8_t*, uint8_t*, uint16_t, uint16_t)	2
+../Core/Src/mlx90393_i2c.cpp:60:6:bool MLX90393::i2c_SM()	2
+../Core/Src/mlx90393_i2c.cpp:71:6:bool MLX90393::i2c_RM()	2
+../Core/Src/mlx90393_i2c.cpp:81:6:bool MLX90393::i2c_EX()	2
+../Core/Src/mlx90393_i2c.cpp:91:6:bool MLX90393::i2c_RT()	2
+../Core/Src/mlx90393_i2c.cpp:101:6:bool MLX90393::i2c_WR(uint8_t, uint16_t)	2
+../Core/Src/mlx90393_i2c.cpp:110:6:bool MLX90393::i2c_RR(uint8_t)	2
+../Core/Src/mlx90393_i2c.cpp:121:6:bool MLX90393::i2c_set_gain(uint8_t)	2
+../Core/Src/mlx90393_i2c.cpp:131:6:bool MLX90393::i2c_get_gain()	2
+../Core/Src/mlx90393_i2c.cpp:140:6:bool MLX90393::i2c_set_resolution(uint8_t, uint8_t, uint8_t)	12
+../Core/Src/mlx90393_i2c.cpp:167:6:bool MLX90393::i2c_get_resolution()	2
+../Core/Src/mlx90393_i2c.cpp:178:6:bool MLX90393::i2c_set_filter(uint8_t)	8
+../Core/Src/mlx90393_i2c.cpp:201:6:bool MLX90393::i2c_get_filter()	2
+../Core/Src/mlx90393_i2c.cpp:209:6:bool MLX90393::i2c_set_oversampling(uint8_t)	8
+../Core/Src/mlx90393_i2c.cpp:232:6:bool MLX90393::i2c_get_oversampling()	2
+../Core/Src/mlx90393_i2c.cpp:241:6:bool MLX90393::i2c_has_error()	1
+../Core/Src/mlx90393_i2c.cpp:245:6:bool MLX90393::i2c_read_data()	3
+../Core/Src/mlx90393_i2c.cpp:256:5:int MLX90393::zyxt_set_bits()	3
+../Core/Src/mlx90393_i2c.cpp:268:6:void MLX90393::decode()	5
+../Core/Src/mlx90393_i2c.cpp:290:9:int16_t MLX90393::decode_helper(uint8_t*)	1
+../Core/Src/mlx90393_i2c.cpp:294:6:void MLX90393::convert()	7
+../Core/Src/mlx90393_i2c.cpp:324:6:void MLX90393::set_zyxt(uint8_t)	1
+../Core/Src/mlx90393_i2c.cpp:328:6:bool MLX90393::get_rm_flag()	1
+../Core/Src/mlx90393_i2c.cpp:332:6:void MLX90393::set_update_flag(bool)	1
+../Core/Src/mlx90393_i2c.cpp:336:6:bool MLX90393::read_update_flag()	1
+../Core/Src/mlx90393_i2c.cpp:340:7:float MLX90393::get_x_data()	1
+../Core/Src/mlx90393_i2c.cpp:344:7:float MLX90393::get_y_data()	1
+../Core/Src/mlx90393_i2c.cpp:348:7:float MLX90393::get_z_data()	1

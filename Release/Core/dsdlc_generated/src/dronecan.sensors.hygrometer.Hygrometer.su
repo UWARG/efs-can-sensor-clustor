@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.sensors.hygrometer.Hygrometer.c:12:10:dronecan_sensors_hygrometer_Hygrometer_encode	24	static
+../Core/dsdlc_generated/src/dronecan.sensors.hygrometer.Hygrometer.c:32:6:dronecan_sensors_hygrometer_Hygrometer_decode	32	static

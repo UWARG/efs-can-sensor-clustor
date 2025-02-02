@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.gnss.Status.h:69:6:_ardupilot_gnss_Status_encode	24	static
+../Core/dsdlc_generated/src/../inc/ardupilot.gnss.Status.h:112:6:_ardupilot_gnss_Status_decode	32	static
+../Core/dsdlc_generated/src/ardupilot.gnss.Status.c:12:10:ardupilot_gnss_Status_encode	24	static
+../Core/dsdlc_generated/src/ardupilot.gnss.Status.c:32:6:ardupilot_gnss_Status_decode	24	static

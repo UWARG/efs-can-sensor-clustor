@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.SelfTest_req.c:14:10:com_hobbywing_esc_SelfTestRequest_encode	0	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.SelfTest_req.c:34:6:com_hobbywing_esc_SelfTestRequest_decode	0	static

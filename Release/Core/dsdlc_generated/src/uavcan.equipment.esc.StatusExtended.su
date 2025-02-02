@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.esc.StatusExtended.c:12:10:uavcan_equipment_esc_StatusExtended_encode	16	static
+../Core/dsdlc_generated/src/uavcan.equipment.esc.StatusExtended.c:32:6:uavcan_equipment_esc_StatusExtended_decode	24	static

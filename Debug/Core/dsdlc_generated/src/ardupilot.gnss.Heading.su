@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.gnss.Heading.h:67:6:_ardupilot_gnss_Heading_encode	32	static
+../Core/dsdlc_generated/src/../inc/ardupilot.gnss.Heading.h:125:6:_ardupilot_gnss_Heading_decode	40	static
+../Core/dsdlc_generated/src/ardupilot.gnss.Heading.c:12:10:ardupilot_gnss_Heading_encode	24	static
+../Core/dsdlc_generated/src/ardupilot.gnss.Heading.c:32:6:ardupilot_gnss_Heading_decode	24	static

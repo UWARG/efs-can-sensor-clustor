@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.himark.servo.ServoCmd.c:12:10:com_himark_servo_ServoCmd_encode	24	static
+../Core/dsdlc_generated/src/com.himark.servo.ServoCmd.c:32:6:com_himark_servo_ServoCmd_decode	32	static

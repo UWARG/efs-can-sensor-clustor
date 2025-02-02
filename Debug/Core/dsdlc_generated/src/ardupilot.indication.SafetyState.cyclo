@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.indication.SafetyState.h:61:6:_ardupilot_indication_SafetyState_encode	1
+../Core/dsdlc_generated/src/../inc/ardupilot.indication.SafetyState.h:86:6:_ardupilot_indication_SafetyState_decode	1
+../Core/dsdlc_generated/src/ardupilot.indication.SafetyState.c:12:10:ardupilot_indication_SafetyState_encode	1
+../Core/dsdlc_generated/src/ardupilot.indication.SafetyState.c:32:6:ardupilot_indication_SafetyState_decode	2

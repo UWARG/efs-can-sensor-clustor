@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.param.NumericValue.c:12:10:uavcan_protocol_param_NumericValue_encode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.param.NumericValue.c:32:6:uavcan_protocol_param_NumericValue_decode	32	static

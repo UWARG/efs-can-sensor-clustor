@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.gnss.Fix2.c:12:10:uavcan_equipment_gnss_Fix2_encode	56	static
+../Core/dsdlc_generated/src/uavcan.equipment.gnss.Fix2.c:32:6:uavcan_equipment_gnss_Fix2_decode	56	static

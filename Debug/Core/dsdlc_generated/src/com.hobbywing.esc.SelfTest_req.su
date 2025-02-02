@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SelfTest_req.h:51:6:_com_hobbywing_esc_SelfTestRequest_encode	24	static
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SelfTest_req.h:67:6:_com_hobbywing_esc_SelfTestRequest_decode	24	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.SelfTest_req.c:14:10:com_hobbywing_esc_SelfTestRequest_encode	24	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.SelfTest_req.c:34:6:com_hobbywing_esc_SelfTestRequest_decode	24	static

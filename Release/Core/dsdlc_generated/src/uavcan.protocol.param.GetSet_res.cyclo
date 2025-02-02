@@ -1,0 +1,6 @@
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.param.Value.h:205:6:_uavcan_protocol_param_Value_decode.constprop	7
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.param.Value.h:80:6:_uavcan_protocol_param_Value_encode.constprop	6
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.param.NumericValue.h:139:6:_uavcan_protocol_param_NumericValue_decode.constprop	3
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.param.NumericValue.h:68:6:_uavcan_protocol_param_NumericValue_encode.constprop	3
+../Core/dsdlc_generated/src/uavcan.protocol.param.GetSet_res.c:12:10:uavcan_protocol_param_GetSetResponse_encode	2
+../Core/dsdlc_generated/src/uavcan.protocol.param.GetSet_res.c:32:6:uavcan_protocol_param_GetSetResponse_decode	7

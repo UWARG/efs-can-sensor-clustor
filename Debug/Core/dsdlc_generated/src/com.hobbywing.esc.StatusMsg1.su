@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.StatusMsg1.h:63:6:_com_hobbywing_esc_StatusMsg1_encode	24	static
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.StatusMsg1.h:106:6:_com_hobbywing_esc_StatusMsg1_decode	32	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.StatusMsg1.c:12:10:com_hobbywing_esc_StatusMsg1_encode	24	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.StatusMsg1.c:32:6:com_hobbywing_esc_StatusMsg1_decode	24	static

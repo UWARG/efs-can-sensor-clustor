@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.dynamic_node_id.server.AppendEntries_res.c:12:10:uavcan_protocol_dynamic_node_id_server_AppendEntriesResponse_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.dynamic_node_id.server.AppendEntries_res.c:32:6:uavcan_protocol_dynamic_node_id_server_AppendEntriesResponse_decode	1

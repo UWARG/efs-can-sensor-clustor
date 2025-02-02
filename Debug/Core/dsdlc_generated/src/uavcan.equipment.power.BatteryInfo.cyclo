@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.power.BatteryInfo.h:133:6:_uavcan_equipment_power_BatteryInfo_encode	3
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.power.BatteryInfo.h:318:6:_uavcan_equipment_power_BatteryInfo_decode	4
+../Core/dsdlc_generated/src/uavcan.equipment.power.BatteryInfo.c:12:10:uavcan_equipment_power_BatteryInfo_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.power.BatteryInfo.c:32:6:uavcan_equipment_power_BatteryInfo_decode	2

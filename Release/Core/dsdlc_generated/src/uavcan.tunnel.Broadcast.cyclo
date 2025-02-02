@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.tunnel.Broadcast.c:12:10:uavcan_tunnel_Broadcast_encode	2
+../Core/dsdlc_generated/src/uavcan.tunnel.Broadcast.c:32:6:uavcan_tunnel_Broadcast_decode	3

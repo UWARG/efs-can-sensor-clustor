@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.indication.SingleLightCommand.c:12:10:uavcan_equipment_indication_SingleLightCommand_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.indication.SingleLightCommand.c:32:6:uavcan_equipment_indication_SingleLightCommand_decode	1

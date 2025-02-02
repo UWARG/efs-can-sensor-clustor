@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.device.Temperature.h:69:6:_uavcan_equipment_device_Temperature_encode	1
+../Core/dsdlc_generated/src/../inc/uavcan.equipment.device.Temperature.h:115:6:_uavcan_equipment_device_Temperature_decode	1
+../Core/dsdlc_generated/src/uavcan.equipment.device.Temperature.c:12:10:uavcan_equipment_device_Temperature_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.device.Temperature.c:32:6:uavcan_equipment_device_Temperature_decode	2

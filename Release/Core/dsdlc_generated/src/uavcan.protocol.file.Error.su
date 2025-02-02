@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.Error.c:12:10:uavcan_protocol_file_Error_encode	8	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.Error.c:32:6:uavcan_protocol_file_Error_decode	16	static

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.actuator.Command.c:12:10:uavcan_equipment_actuator_Command_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.actuator.Command.c:32:6:uavcan_equipment_actuator_Command_decode	32	static

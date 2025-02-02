@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.FocCtrl.h:71:6:_com_tmotor_esc_FocCtrl_encode	1
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.FocCtrl.h:132:6:_com_tmotor_esc_FocCtrl_decode	1
+../Core/dsdlc_generated/src/com.tmotor.esc.FocCtrl.c:12:10:com_tmotor_esc_FocCtrl_encode	1
+../Core/dsdlc_generated/src/com.tmotor.esc.FocCtrl.c:32:6:com_tmotor_esc_FocCtrl_decode	2

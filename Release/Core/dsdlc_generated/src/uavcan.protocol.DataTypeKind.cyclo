@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.DataTypeKind.c:12:10:uavcan_protocol_DataTypeKind_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.DataTypeKind.c:32:6:uavcan_protocol_DataTypeKind_decode	1

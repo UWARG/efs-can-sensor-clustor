@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.tunnel.Targetted.c:12:10:uavcan_tunnel_Targetted_encode	2
+../Core/dsdlc_generated/src/uavcan.tunnel.Targetted.c:32:6:uavcan_tunnel_Targetted_decode	3

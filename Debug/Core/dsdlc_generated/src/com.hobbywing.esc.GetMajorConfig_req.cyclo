@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.GetMajorConfig_req.h:55:6:_com_hobbywing_esc_GetMajorConfigRequest_encode	1
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.GetMajorConfig_req.h:80:6:_com_hobbywing_esc_GetMajorConfigRequest_decode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetMajorConfig_req.c:14:10:com_hobbywing_esc_GetMajorConfigRequest_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.GetMajorConfig_req.c:34:6:com_hobbywing_esc_GetMajorConfigRequest_decode	2

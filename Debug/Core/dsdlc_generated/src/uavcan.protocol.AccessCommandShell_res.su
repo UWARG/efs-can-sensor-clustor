@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.AccessCommandShell_res.h:73:6:_uavcan_protocol_AccessCommandShellResponse_encode	32	static
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.AccessCommandShell_res.h:138:6:_uavcan_protocol_AccessCommandShellResponse_decode	40	static
+../Core/dsdlc_generated/src/uavcan.protocol.AccessCommandShell_res.c:12:10:uavcan_protocol_AccessCommandShellResponse_encode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.AccessCommandShell_res.c:32:6:uavcan_protocol_AccessCommandShellResponse_decode	24	static

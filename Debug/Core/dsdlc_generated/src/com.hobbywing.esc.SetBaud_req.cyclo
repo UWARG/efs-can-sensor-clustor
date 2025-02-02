@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetBaud_req.h:69:6:_com_hobbywing_esc_SetBaudRequest_encode	1
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetBaud_req.h:94:6:_com_hobbywing_esc_SetBaudRequest_decode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetBaud_req.c:14:10:com_hobbywing_esc_SetBaudRequest_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetBaud_req.c:34:6:com_hobbywing_esc_SetBaudRequest_decode	2

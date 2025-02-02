@@ -74,20 +74,6 @@
 #define MLX90393_RES_16 0x01
 #define MLX90393_RES_17 0x02
 #define MLX90393_RES_18 0x03
-//OSR selection
-#define MLX90393_OSR_0 0x00
-#define MLX90393_OSR_1 0x01
-#define MLX90393_OSR_2 0x02
-#define MLX90393_OSR_3 0x03
-//Filter Selection
-#define MLX90393_FILTER_0 0x00
-#define MLX90393_FILTER_1 0x01
-#define MLX90393_FILTER_2 0x02
-#define MLX90393_FILTER_3 0x03
-#define MLX90393_FILTER_4 0x04
-#define MLX90393_FILTER_5 0x05
-#define MLX90393_FILTER_6 0x06
-#define MLX90393_FILTER_7 0x07
 
 //See 16.2.4
 const float sens_lookup_0xC[8][4][2] = {
@@ -146,7 +132,7 @@ class MLX90393{
 		bool i2c_set_oversampling(uint8_t osr);
 		bool i2c_get_oversampling();
 		bool i2c_has_error();
-		bool read_data();
+		bool i2c_read_data();
 		bool get_rm_flag();
 		void set_update_flag(bool update);
 		bool read_update_flag();
@@ -195,9 +181,10 @@ class MLX90393{
 
 		HAL_StatusTypeDef i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		HAL_StatusTypeDef i2c_transceive_IT(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
+
 		int16_t decode_helper(uint8_t *data);
 		int zyxt_set_bits();
-		void set_zyxt(uint8_t zyxt);
+		void set_zyxt(uint8_t set_zyxt);
 };
 
 #endif /* INC_MLX90393_I2C_HPP_ */

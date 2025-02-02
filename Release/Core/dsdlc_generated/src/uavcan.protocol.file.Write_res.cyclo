@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.Write_res.c:12:10:uavcan_protocol_file_WriteResponse_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.file.Write_res.c:32:6:uavcan_protocol_file_WriteResponse_decode	1

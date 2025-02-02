@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.remoteid.SecureCommand_res.c:12:10:dronecan_remoteid_SecureCommandResponse_encode	2
+../Core/dsdlc_generated/src/dronecan.remoteid.SecureCommand_res.c:32:6:dronecan_remoteid_SecureCommandResponse_decode	3

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.sensors.rc.RCInput.c:12:10:dronecan_sensors_rc_RCInput_encode	2
+../Core/dsdlc_generated/src/dronecan.sensors.rc.RCInput.c:32:6:dronecan_sensors_rc_RCInput_decode	3

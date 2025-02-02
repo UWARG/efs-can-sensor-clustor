@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.remoteid.SecureCommand_req.c:14:10:dronecan_remoteid_SecureCommandRequest_encode	24	static
+../Core/dsdlc_generated/src/dronecan.remoteid.SecureCommand_req.c:34:6:dronecan_remoteid_SecureCommandRequest_decode	32	static

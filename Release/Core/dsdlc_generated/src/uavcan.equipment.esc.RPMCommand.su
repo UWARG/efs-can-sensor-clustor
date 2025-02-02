@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.esc.RPMCommand.c:12:10:uavcan_equipment_esc_RPMCommand_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.esc.RPMCommand.c:32:6:uavcan_equipment_esc_RPMCommand_decode	32	static

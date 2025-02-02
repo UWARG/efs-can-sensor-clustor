@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.himark.servo.ServoCmd.h:55:6:_com_himark_servo_ServoCmd_encode	3
+../Core/dsdlc_generated/src/../inc/com.himark.servo.ServoCmd.h:102:6:_com_himark_servo_ServoCmd_decode	4
+../Core/dsdlc_generated/src/com.himark.servo.ServoCmd.c:12:10:com_himark_servo_ServoCmd_encode	1
+../Core/dsdlc_generated/src/com.himark.servo.ServoCmd.c:32:6:com_himark_servo_ServoCmd_decode	2

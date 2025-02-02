@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetDirection_res.h:55:6:_com_hobbywing_esc_SetDirectionResponse_encode	1
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.SetDirection_res.h:80:6:_com_hobbywing_esc_SetDirectionResponse_decode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetDirection_res.c:12:10:com_hobbywing_esc_SetDirectionResponse_encode	1
+../Core/dsdlc_generated/src/com.hobbywing.esc.SetDirection_res.c:32:6:com_hobbywing_esc_SetDirectionResponse_decode	2

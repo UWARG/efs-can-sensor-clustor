@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.sensors.rpm.RPM.c:12:10:dronecan_sensors_rpm_RPM_encode	16	static
+../Core/dsdlc_generated/src/dronecan.sensors.rpm.RPM.c:32:6:dronecan_sensors_rpm_RPM_decode	24	static

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.GetNodeInfo_req.c:14:10:uavcan_protocol_GetNodeInfoRequest_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.GetNodeInfo_req.c:34:6:uavcan_protocol_GetNodeInfoRequest_decode	1

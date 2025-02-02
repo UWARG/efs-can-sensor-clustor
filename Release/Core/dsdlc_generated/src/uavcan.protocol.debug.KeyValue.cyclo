@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.debug.KeyValue.c:12:10:uavcan_protocol_debug_KeyValue_encode	2
+../Core/dsdlc_generated/src/uavcan.protocol.debug.KeyValue.c:32:6:uavcan_protocol_debug_KeyValue_decode	3

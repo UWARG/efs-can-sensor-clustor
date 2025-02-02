@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/ardupilot.indication.Button.c:12:10:ardupilot_indication_Button_encode	1
+../Core/dsdlc_generated/src/ardupilot.indication.Button.c:32:6:ardupilot_indication_Button_decode	1

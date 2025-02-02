@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.remoteid.ArmStatus.c:12:10:dronecan_remoteid_ArmStatus_encode	2
+../Core/dsdlc_generated/src/dronecan.remoteid.ArmStatus.c:32:6:dronecan_remoteid_ArmStatus_decode	3

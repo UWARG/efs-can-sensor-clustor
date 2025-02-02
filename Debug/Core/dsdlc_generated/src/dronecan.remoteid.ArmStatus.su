@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.ArmStatus.h:65:6:_dronecan_remoteid_ArmStatus_encode	32	static
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.ArmStatus.h:121:6:_dronecan_remoteid_ArmStatus_decode	40	static
+../Core/dsdlc_generated/src/dronecan.remoteid.ArmStatus.c:12:10:dronecan_remoteid_ArmStatus_encode	24	static
+../Core/dsdlc_generated/src/dronecan.remoteid.ArmStatus.c:32:6:dronecan_remoteid_ArmStatus_decode	24	static

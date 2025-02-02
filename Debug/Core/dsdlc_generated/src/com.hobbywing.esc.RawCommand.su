@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.RawCommand.h:55:6:_com_hobbywing_esc_RawCommand_encode	32	static
+../Core/dsdlc_generated/src/../inc/com.hobbywing.esc.RawCommand.h:102:6:_com_hobbywing_esc_RawCommand_decode	40	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.RawCommand.c:12:10:com_hobbywing_esc_RawCommand_encode	24	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.RawCommand.c:32:6:com_hobbywing_esc_RawCommand_decode	24	static

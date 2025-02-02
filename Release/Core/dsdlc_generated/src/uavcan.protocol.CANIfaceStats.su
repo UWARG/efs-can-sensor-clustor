@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.CANIfaceStats.c:12:10:uavcan_protocol_CANIfaceStats_encode	16	static
+../Core/dsdlc_generated/src/uavcan.protocol.CANIfaceStats.c:32:6:uavcan_protocol_CANIfaceStats_decode	24	static

@@ -1,0 +1,6 @@
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.file.Error.h:67:6:_uavcan_protocol_file_Error_encode	1
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.file.Error.h:92:6:_uavcan_protocol_file_Error_decode	1
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.Read_res.h:61:6:_uavcan_protocol_file_ReadResponse_encode	3
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.Read_res.h:114:6:_uavcan_protocol_file_ReadResponse_decode	5
+../Core/dsdlc_generated/src/uavcan.protocol.file.Read_res.c:12:10:uavcan_protocol_file_ReadResponse_encode	1
+../Core/dsdlc_generated/src/uavcan.protocol.file.Read_res.c:32:6:uavcan_protocol_file_ReadResponse_decode	2

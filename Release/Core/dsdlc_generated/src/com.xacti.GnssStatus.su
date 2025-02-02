@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.xacti.GnssStatus.c:12:10:com_xacti_GnssStatus_encode	16	static
+../Core/dsdlc_generated/src/com.xacti.GnssStatus.c:32:6:com_xacti_GnssStatus_decode	24	static

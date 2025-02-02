@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.Timestamp.c:12:10:uavcan_Timestamp_encode	8	static
+../Core/dsdlc_generated/src/uavcan.Timestamp.c:32:6:uavcan_Timestamp_decode	16	static

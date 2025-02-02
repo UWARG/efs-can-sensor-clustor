@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.IndicatedAirspeed.c:12:10:uavcan_equipment_air_data_IndicatedAirspeed_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.IndicatedAirspeed.c:32:6:uavcan_equipment_air_data_IndicatedAirspeed_decode	1

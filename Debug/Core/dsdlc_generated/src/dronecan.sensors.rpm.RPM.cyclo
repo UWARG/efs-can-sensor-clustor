@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/dronecan.sensors.rpm.RPM.h:67:6:_dronecan_sensors_rpm_RPM_encode	1
+../Core/dsdlc_generated/src/../inc/dronecan.sensors.rpm.RPM.h:110:6:_dronecan_sensors_rpm_RPM_decode	1
+../Core/dsdlc_generated/src/dronecan.sensors.rpm.RPM.c:12:10:dronecan_sensors_rpm_RPM_encode	1
+../Core/dsdlc_generated/src/dronecan.sensors.rpm.RPM.c:32:6:dronecan_sensors_rpm_RPM_decode	2

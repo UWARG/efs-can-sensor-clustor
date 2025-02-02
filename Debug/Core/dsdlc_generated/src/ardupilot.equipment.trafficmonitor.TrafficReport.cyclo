@@ -1,0 +1,6 @@
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.Timestamp.h:49:6:_uavcan_Timestamp_encode	1
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.Timestamp.h:74:6:_uavcan_Timestamp_decode	1
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.trafficmonitor.TrafficReport.h:185:6:_ardupilot_equipment_trafficmonitor_TrafficReport_encode	3
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.trafficmonitor.TrafficReport.h:409:6:_ardupilot_equipment_trafficmonitor_TrafficReport_decode	4
+../Core/dsdlc_generated/src/ardupilot.equipment.trafficmonitor.TrafficReport.c:12:10:ardupilot_equipment_trafficmonitor_TrafficReport_encode	1
+../Core/dsdlc_generated/src/ardupilot.equipment.trafficmonitor.TrafficReport.c:32:6:ardupilot_equipment_trafficmonitor_TrafficReport_decode	2

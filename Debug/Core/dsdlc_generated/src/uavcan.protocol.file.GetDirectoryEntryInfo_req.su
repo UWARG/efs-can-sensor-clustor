@@ -1,0 +1,6 @@
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.file.Path.h:49:6:_uavcan_protocol_file_Path_encode	32	static
+../Core/dsdlc_generated/src/../inc/../inc/uavcan.protocol.file.Path.h:96:6:_uavcan_protocol_file_Path_decode	40	static
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.GetDirectoryEntryInfo_req.h:61:6:_uavcan_protocol_file_GetDirectoryEntryInfoRequest_encode	24	static
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.GetDirectoryEntryInfo_req.h:92:6:_uavcan_protocol_file_GetDirectoryEntryInfoRequest_decode	32	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.GetDirectoryEntryInfo_req.c:14:10:uavcan_protocol_file_GetDirectoryEntryInfoRequest_encode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.GetDirectoryEntryInfo_req.c:34:6:uavcan_protocol_file_GetDirectoryEntryInfoRequest_decode	24	static

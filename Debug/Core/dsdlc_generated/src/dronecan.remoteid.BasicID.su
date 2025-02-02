@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.BasicID.h:111:6:_dronecan_remoteid_BasicID_encode	40	static
+../Core/dsdlc_generated/src/../inc/dronecan.remoteid.BasicID.h:201:6:_dronecan_remoteid_BasicID_decode	40	static
+../Core/dsdlc_generated/src/dronecan.remoteid.BasicID.c:12:10:dronecan_remoteid_BasicID_encode	24	static
+../Core/dsdlc_generated/src/dronecan.remoteid.BasicID.c:32:6:dronecan_remoteid_BasicID_decode	24	static

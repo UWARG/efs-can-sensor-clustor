@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.indication.BeepCommand.c:12:10:uavcan_equipment_indication_BeepCommand_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.indication.BeepCommand.c:32:6:uavcan_equipment_indication_BeepCommand_decode	32	static

@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.hobbywing.esc.StatusMsg2.c:12:10:com_hobbywing_esc_StatusMsg2_encode	16	static
+../Core/dsdlc_generated/src/com.hobbywing.esc.StatusMsg2.c:32:6:com_hobbywing_esc_StatusMsg2_decode	24	static

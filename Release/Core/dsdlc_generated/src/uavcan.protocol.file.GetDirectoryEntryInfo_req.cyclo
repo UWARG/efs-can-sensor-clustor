@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.file.GetDirectoryEntryInfo_req.c:14:10:uavcan_protocol_file_GetDirectoryEntryInfoRequest_encode	2
+../Core/dsdlc_generated/src/uavcan.protocol.file.GetDirectoryEntryInfo_req.c:34:6:uavcan_protocol_file_GetDirectoryEntryInfoRequest_decode	3

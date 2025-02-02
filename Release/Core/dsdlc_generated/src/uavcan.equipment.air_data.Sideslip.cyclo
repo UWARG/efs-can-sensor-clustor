@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.Sideslip.c:12:10:uavcan_equipment_air_data_Sideslip_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.air_data.Sideslip.c:32:6:uavcan_equipment_air_data_Sideslip_decode	1

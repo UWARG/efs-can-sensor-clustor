@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.Path.h:49:6:_uavcan_protocol_file_Path_encode	32	static
+../Core/dsdlc_generated/src/../inc/uavcan.protocol.file.Path.h:96:6:_uavcan_protocol_file_Path_decode	40	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.Path.c:12:10:uavcan_protocol_file_Path_encode	24	static
+../Core/dsdlc_generated/src/uavcan.protocol.file.Path.c:32:6:uavcan_protocol_file_Path_decode	24	static

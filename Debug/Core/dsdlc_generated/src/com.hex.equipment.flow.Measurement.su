@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.hex.equipment.flow.Measurement.h:67:6:_com_hex_equipment_flow_Measurement_encode	32	static
+../Core/dsdlc_generated/src/../inc/com.hex.equipment.flow.Measurement.h:135:6:_com_hex_equipment_flow_Measurement_decode	40	static
+../Core/dsdlc_generated/src/com.hex.equipment.flow.Measurement.c:12:10:com_hex_equipment_flow_Measurement_encode	24	static
+../Core/dsdlc_generated/src/com.hex.equipment.flow.Measurement.c:32:6:com_hex_equipment_flow_Measurement_decode	24	static

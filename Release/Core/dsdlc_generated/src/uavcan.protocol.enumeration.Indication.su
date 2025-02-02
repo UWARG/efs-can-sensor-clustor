@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.protocol.enumeration.Indication.c:12:10:uavcan_protocol_enumeration_Indication_encode	40	static
+../Core/dsdlc_generated/src/uavcan.protocol.enumeration.Indication.c:32:6:uavcan_protocol_enumeration_Indication_decode	40	static

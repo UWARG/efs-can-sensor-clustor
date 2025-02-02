@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/dronecan.remoteid.BasicID.c:12:10:dronecan_remoteid_BasicID_encode	3
+../Core/dsdlc_generated/src/dronecan.remoteid.BasicID.c:32:6:dronecan_remoteid_BasicID_decode	5

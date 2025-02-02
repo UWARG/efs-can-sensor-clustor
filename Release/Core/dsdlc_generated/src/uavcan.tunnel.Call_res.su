@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.tunnel.Call_res.c:12:10:uavcan_tunnel_CallResponse_encode	24	static
+../Core/dsdlc_generated/src/uavcan.tunnel.Call_res.c:32:6:uavcan_tunnel_CallResponse_decode	24	static

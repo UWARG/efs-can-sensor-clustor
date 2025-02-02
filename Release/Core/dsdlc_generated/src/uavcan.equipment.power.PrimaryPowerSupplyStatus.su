@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.power.PrimaryPowerSupplyStatus.c:12:10:uavcan_equipment_power_PrimaryPowerSupplyStatus_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.power.PrimaryPowerSupplyStatus.c:32:6:uavcan_equipment_power_PrimaryPowerSupplyStatus_decode	32	static

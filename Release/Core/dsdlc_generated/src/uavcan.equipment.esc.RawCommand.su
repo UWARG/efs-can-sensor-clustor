@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.esc.RawCommand.c:12:10:uavcan_equipment_esc_RawCommand_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.esc.RawCommand.c:32:6:uavcan_equipment_esc_RawCommand_decode	32	static

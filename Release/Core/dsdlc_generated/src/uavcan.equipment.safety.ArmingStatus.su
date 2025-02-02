@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.safety.ArmingStatus.c:12:10:uavcan_equipment_safety_ArmingStatus_encode	8	static
+../Core/dsdlc_generated/src/uavcan.equipment.safety.ArmingStatus.c:32:6:uavcan_equipment_safety_ArmingStatus_decode	16	static

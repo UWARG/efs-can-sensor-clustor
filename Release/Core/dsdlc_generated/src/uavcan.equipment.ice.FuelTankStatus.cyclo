@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.ice.FuelTankStatus.c:12:10:uavcan_equipment_ice_FuelTankStatus_encode	1
+../Core/dsdlc_generated/src/uavcan.equipment.ice.FuelTankStatus.c:32:6:uavcan_equipment_ice_FuelTankStatus_decode	1

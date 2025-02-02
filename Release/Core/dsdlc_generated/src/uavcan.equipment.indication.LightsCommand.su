@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/uavcan.equipment.indication.LightsCommand.c:12:10:uavcan_equipment_indication_LightsCommand_encode	24	static
+../Core/dsdlc_generated/src/uavcan.equipment.indication.LightsCommand.c:32:6:uavcan_equipment_indication_LightsCommand_decode	32	static

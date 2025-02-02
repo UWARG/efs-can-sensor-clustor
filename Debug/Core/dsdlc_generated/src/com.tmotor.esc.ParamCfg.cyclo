@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.ParamCfg.h:111:6:_com_tmotor_esc_ParamCfg_encode	1
+../Core/dsdlc_generated/src/../inc/com.tmotor.esc.ParamCfg.h:262:6:_com_tmotor_esc_ParamCfg_decode	1
+../Core/dsdlc_generated/src/com.tmotor.esc.ParamCfg.c:12:10:com_tmotor_esc_ParamCfg_encode	1
+../Core/dsdlc_generated/src/com.tmotor.esc.ParamCfg.c:32:6:com_tmotor_esc_ParamCfg_decode	2

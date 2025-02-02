@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/com.xacti.GnssStatusReq.c:12:10:com_xacti_GnssStatusReq_encode	1
+../Core/dsdlc_generated/src/com.xacti.GnssStatusReq.c:32:6:com_xacti_GnssStatusReq_decode	1

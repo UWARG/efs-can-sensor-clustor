@@ -1,0 +1,2 @@
+../Core/dsdlc_generated/src/ardupilot.gnss.RelPosHeading.c:12:10:ardupilot_gnss_RelPosHeading_encode	24	static
+../Core/dsdlc_generated/src/ardupilot.gnss.RelPosHeading.c:32:6:ardupilot_gnss_RelPosHeading_decode	32	static

@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryPeriodic.h:111:6:_ardupilot_equipment_power_BatteryPeriodic_encode	56	static
+../Core/dsdlc_generated/src/../inc/ardupilot.equipment.power.BatteryPeriodic.h:322:6:_ardupilot_equipment_power_BatteryPeriodic_decode	56	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryPeriodic.c:12:10:ardupilot_equipment_power_BatteryPeriodic_encode	24	static
+../Core/dsdlc_generated/src/ardupilot.equipment.power.BatteryPeriodic.c:32:6:ardupilot_equipment_power_BatteryPeriodic_decode	24	static

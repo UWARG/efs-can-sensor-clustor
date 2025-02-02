@@ -1,0 +1,4 @@
+../Core/dsdlc_generated/src/../inc/com.xacti.GnssStatusReq.h:55:6:_com_xacti_GnssStatusReq_encode	24	static
+../Core/dsdlc_generated/src/../inc/com.xacti.GnssStatusReq.h:80:6:_com_xacti_GnssStatusReq_decode	32	static
+../Core/dsdlc_generated/src/com.xacti.GnssStatusReq.c:12:10:com_xacti_GnssStatusReq_encode	24	static
+../Core/dsdlc_generated/src/com.xacti.GnssStatusReq.c:32:6:com_xacti_GnssStatusReq_decode	24	static
