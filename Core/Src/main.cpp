@@ -244,6 +244,7 @@ void handle_GetNodeInfo(CanardInstance *ins, CanardRxTransfer *transfer) {
   send the 1Hz NodeStatus message. This is what allows a node to show
   up in the DroneCAN GUI tool and in the flight controller logs
  */
+/////////////////////////////////Example/////////////////////////////////////
 void send_NodeStatus(void) {
     uint8_t buffer[UAVCAN_PROTOCOL_GETNODEINFO_RESPONSE_MAX_SIZE];
 
@@ -270,18 +271,23 @@ void send_NodeStatus(void) {
                     buffer,
                     len);
 }
+///////////////////////////////////////////////////////////////////////////////
 
+//Magnetometer sender
 void send_MLX90393(void) {
     uint8_t buffer[UAVCAN_EQUIPMENT_AHRS_MAGNETICFIELDSTRENGTH2_MAX_SIZE];
 
     // put whatever you like in here for display in GUI
     mlx90393_node.sensor_id = 1;
-    //1 mT = 10G
-    mlx90393_node.magnetic_field_ga[0] = (float)mlx90393.get_x_data() * 10.0;
-    mlx90393_node.magnetic_field_ga[1] = (float)mlx90393.get_y_data() * 10.0;
-    mlx90393_node.magnetic_field_ga[2] = (float)mlx90393.get_z_data() * 10.0;
+    //1 uT = 0.01 Gauss, transfer in Gauss
+    mlx90393_node.magnetic_field_ga[0] = (float)mlx90393.get_x_data() / 100.0;
+    mlx90393_node.magnetic_field_ga[1] = (float)mlx90393.get_y_data() / 100.0;
+    mlx90393_node.magnetic_field_ga[2] = (float)mlx90393.get_z_data() / 100.0;
     mlx90393_node.magnetic_field_covariance.len = 9;
     //Covariance matrix with variance terms only, refer to 13.1 for noise standard deviation
+    //Settings: OSR = 3, digital filter = 5, conversion time = 52.92ms
+    //Standard deviation for XY-axis error = 5 mGauss, Z-axis = 7 mGauss
+    //Covariance is 0?
     mlx90393_node.magnetic_field_covariance.data[0] = 2.5E-5;
     mlx90393_node.magnetic_field_covariance.data[1] = 0.0;
     mlx90393_node.magnetic_field_covariance.data[2] = 0.0;
@@ -416,7 +422,7 @@ void process1HzTasks(uint64_t timestamp_usec) {
     /*
       Transmit the node status message
     */
-    send_NodeStatus();
+    send_NodeStatus(); //For test
     send_MLX90393();
 }
 
