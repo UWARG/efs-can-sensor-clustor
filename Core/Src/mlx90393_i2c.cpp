@@ -33,6 +33,9 @@ MLX90393::MLX90393(I2C_HandleTypeDef *hi2c){
 	this->converted.y = 0;
 	this->converted.z = 0;
 	this->zyxt = 0x0E;
+	this->rm_flag = false;
+	this->mes_updated = true;
+	this->wait_flag = false;
 }
 
 HAL_StatusTypeDef MLX90393::i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size)
@@ -71,6 +74,7 @@ bool MLX90393::i2c_SM()
 bool MLX90393::i2c_RM(){
 	this->rm_flag = true;
 	this->mes_updated = false;
+	this->wait_flag = true;
 	uint8_t tx_data = (uint8_t)CMD_READ_MEASUREMENT | this->zyxt;
 	if(i2c_transceive_IT(&tx_data, this->rx_data, 1, 7) != HAL_OK){
 		return false;
@@ -335,6 +339,14 @@ void MLX90393::set_update_flag(bool update){
 
 bool MLX90393::read_update_flag(){
 	return this->mes_updated;
+}
+
+void MLX90393::set_wait_flag(bool update){
+	this->wait_flag = update;
+}
+
+bool MLX90393::read_wait_flag(){
+	return this->wait_flag;
 }
 
 float MLX90393::get_x_data(){

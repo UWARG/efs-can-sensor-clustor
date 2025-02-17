@@ -490,11 +490,16 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  mlx90393.i2c_SM();
-	  mlx90393.i2c_RM();
+	  if(mlx90393.read_wait_flag()){
+		  mlx90393.i2c_SM();
+		  mlx90393.i2c_RM();
+	  }
 	  if(mlx90393.read_update_flag()){
+		  mlx90393.set_wait_flag(false);
 		  mlx90393.decode();
 		  mlx90393.convert();
+	  }else{
+		  continue;
 	  }
 	const uint64_t ts = HAL_GetTick();
 

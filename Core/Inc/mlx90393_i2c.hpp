@@ -136,6 +136,8 @@ class MLX90393{
 		bool get_rm_flag();
 		void set_update_flag(bool update);
 		bool read_update_flag();
+		void set_wait_flag(bool update);
+		bool read_wait_flag();
 		void decode();
 		void convert();
 		float get_x_data();
@@ -178,6 +180,7 @@ class MLX90393{
 		bool rm_flag;
 		uint8_t rx_data[7];
 		bool mes_updated;
+		bool wait_flag;
 
 		HAL_StatusTypeDef i2c_transceive(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
 		HAL_StatusTypeDef i2c_transceive_IT(uint8_t *tx_data, uint8_t *rx_data, uint16_t tx_size, uint16_t rx_size);
