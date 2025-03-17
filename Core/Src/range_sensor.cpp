@@ -234,48 +234,46 @@ bool Rangefinder::do_detector_calibration_update()
 
 bool Rangefinder::do_detector_get_next(acc_detector_distance_result_t *result)
 {
-	bool result_available = false;
-
-	do
+	if (!acc_detector_distance_prepare(resources_.handle, resources_.config, resources_.sensor, &sensor_cal_result_, resources_.buffer,
+	                                   resources_.buffer_size))
 	{
-		if (!acc_detector_distance_prepare(resources_.handle, resources_.config, resources_.sensor, &sensor_cal_result_, resources_.buffer,
-		                                   resources_.buffer_size))
-		{
-			printf("acc_detector_distance_prepare() failed\n");
-			return false;
-		}
+		printf("acc_detector_distance_prepare() failed\n");
+		return false;
+	}
 
-		if (!acc_sensor_measure(resources_.sensor))
-		{
-			printf("acc_sensor_measure() failed\n");
-			return false;
-		}
+	if (!acc_sensor_measure(resources_.sensor))
+	{
+		printf("acc_sensor_measure() failed\n");
+		return false;
+	}
 
-		if (!acc_hal_integration_wait_for_sensor_interrupt(SENSOR_ID, SENSOR_TIMEOUT_MS))
-		{
-			printf("Sensor interrupt timeout\n");
-			return false;
-		}
-
-		if (!acc_sensor_read(resources_.sensor, resources_.buffer, resources_.buffer_size))
-		{
-			printf("acc_sensor_read() failed\n");
-			return false;
-		}
-
-		if (!acc_detector_distance_process(resources_.handle, resources_.buffer, resources_.detector_cal_result_static,
-		                                   &resources_.detector_cal_result_dynamic,
-		                                   &result_available, result))
-		{
-			printf("acc_detector_distance_process() failed\n");
-			return false;
-		}
-		// vTaskDelay() this!
-	} while (!result_available);
-
+	this->interrupt_flag = false;
+	this->read_flag = true;
 	return true;
 }
 
+bool Rangefinder::read_distance_result(distance_detector_resources_t  *resources, const acc_cal_result_t *sensor_cal_result,
+        acc_detector_distance_result_t *result){
+	bool result_available = false;
+
+	if (!acc_sensor_read(resources->sensor, resources->buffer, resources->buffer_size))
+	{
+		printf("acc_sensor_read() failed\n");
+		return false;
+	}
+
+	if (!acc_detector_distance_process(resources->handle,
+	                                   resources->buffer,
+	                                   resources->detector_cal_result_static,
+	                                   &resources->detector_cal_result_dynamic,
+	                                   &result_available,
+	                                   result))
+	{
+		printf("acc_detector_distance_process() failed\n");
+		return false;
+	}
+	return result_available;
+}
 
 void Rangefinder::print_distance_result(const acc_detector_distance_result_t *result)
 {
@@ -352,47 +350,55 @@ Rangefinder::Rangefinder():
 			cleanup();
 			exit(1);
 		}
+
+		this->interrupt_flag = false;
+		this->read_flag = false;
 }
 
 int Rangefinder::get_distance_task() {
-	while (1) {
-		acc_detector_distance_result_t result = { 0 };
+	acc_detector_distance_result_t result = {0};
 
-		if (!do_detector_get_next(&result))
+	if (!do_detector_get_next(&resources, &sensor_cal_result, &result))
+	{
+		printf("Could not get next result\n");
+		cleanup(&resources);
+		return EXIT_FAILURE;
+	}
+
+	/* If "calibration needed" is indicated, the sensor needs to be recalibrated and the detector calibration updated */
+	if (result.calibration_needed)
+	{
+		printf("Sensor recalibration and detector calibration update needed ... \n");
+
+		if (!do_sensor_calibration(resources.sensor, &sensor_cal_result, resources.buffer, resources.buffer_size))
 		{
-			printf("Could not get next result\n");
+			printf("Sensor calibration failed\n");
 			cleanup(&resources);
 			return EXIT_FAILURE;
 		}
 
-		/* If "calibration needed" is indicated, the sensor needs to be recalibrated and the detector calibration updated */
-		if (result.calibration_needed)
+		/* Once the sensor is recalibrated, the detector calibration should be updated and measuring can continue. */
+		if (!do_detector_calibration_update(&resources, &sensor_cal_result))
 		{
-			printf("Sensor recalibration and detector calibration update needed ... \n");
-
-			if (!do_sensor_calibration(resources.sensor, &sensor_cal_result, resources.buffer, resources.buffer_size))
-			{
-				printf("Sensor calibration failed\n");
-				cleanup(&resources);
-				return EXIT_FAILURE;
-			}
-
-			/* Once the sensor is recalibrated, the detector calibration should be updated and measuring can continue. */
-			if (!do_detector_calibration_update(&resources))
-			{
-				printf("Detector calibration update failed\n");
-				cleanup(&resources);
-				return EXIT_FAILURE;
-			}
-
-			printf("Sensor recalibration and detector calibration update done!\n");
-		}
-		else
-		{
-			print_distance_result(&result);
+			printf("Detector calibration update failed\n");
+			cleanup(&resources);
+			return EXIT_FAILURE;
 		}
 
-		// vTaskDelay() this!
+		printf("Sensor recalibration and detector calibration update done!\n");
+	}
+	else
+	{
+		print_distance_result(&result);
 	}
 }
 
+bool Rangefinder::get_interrupt_flag(){
+	if(HAL_GPIO_ReadPin(int_port, int_pin_mask) == GPIO_PIN_SET){
+
+	}
+	return this->interrupt_flag;
+}
+bool Rangefinder::get_read_flag(){
+	return this->read_flag;
+}

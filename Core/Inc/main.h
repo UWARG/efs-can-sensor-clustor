@@ -57,6 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define RADAR_Pin GPIO_PIN_8
+#define RADAR_GPIO_Port GPIOB
+#define LIDAR_Pin GPIO_PIN_9
+#define LIDAR_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -38,10 +38,15 @@ class Rangefinder {
 	Rangefinder(); //SPI_HandleTypeDef* spi, int chip_select_pin);
 
 	int get_distance(); // isnt this accomplished in get_next
+	bool get_interrupt_flag();
+	bool get_read_flag();
+
 	private:
 	distance_detector_resources_t resources_;
 	acc_cal_result_t sensor_cal_result_;
 	acc_detector_distance_result_t result_;
+	bool interrupt_flag;
+	bool read_flag;
 
 	void cleanup();
 	void set_config(acc_detector_distance_config_t *detector_config, distance_preset_config_t preset);
@@ -52,8 +57,9 @@ class Rangefinder {
 	bool do_full_detector_calibration();
 	bool do_detector_calibration_update();
 	bool do_detector_get_next(acc_detector_distance_result_t *result);
+	bool read_distance_result(distance_detector_resources_t  *resources, const acc_cal_result_t *sensor_cal_result,
+            acc_detector_distance_result_t *result);
 	void print_distance_result(const acc_detector_distance_result_t *result);
-
 
 };
 

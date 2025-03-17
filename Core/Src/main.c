@@ -34,12 +34,13 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+static void spi_select(int sensor_id);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define RADAR_ID 0
+#define LIDAR_ID 1
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -56,7 +57,20 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+static void spi_select(int sensor_id){
+	switch(sensor_id){
+		case RADAR_ID:
+			HAL_GPIO_WritePin(GPIO_B, RADAR_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIO_B, LIDAR_Pin, GPIO_PIN_SET);
+			break;
+		case LIDAR_ID:
+			HAL_GPIO_WritePin(GPIO_B, RADAR_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIO_B, LIDAR_Pin, GPIO_PIN_RESET);
+			break;
+		default:
+			break;
+	}
+}
 /* USER CODE END 0 */
 
 /**
