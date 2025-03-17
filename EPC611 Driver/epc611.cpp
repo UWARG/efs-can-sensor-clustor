@@ -21,30 +21,30 @@ uint16_t EPC611::sendRecv(uint16_t data) {
 	uint8_t send[2] = {data>>8, data&0x00FF}; // MSB first
 	uint8_t received[2] = {0};
 	HAL_SPI_TransmitReceive(&hspi1, send, received, 2, SPI_TIMEOUT);
-	return received[0] <<8 | (received[1]);
 	HAL_GPIO_WritePin(gpio_nss,nss_pin,GPIO_PIN_SET);
+	return received[0] <<8 | (received[1]);
 }
 
 uint16_t EPC611::write(uint8_t data,uint8_t address) {
 	uint16_t write = EPC_WRITE | data | ((address&0x1F) << 8);
-	return EPC611::poll(write);
+	return poll(write);
 }
 uint16_t EPC611::read(uint8_t address) {
 	uint16_t write = EPC_READ | ((address&0x1F) << 8);
-	return EPC611::poll(write);
+	return poll(write);
 }
 uint16_t EPC611::pageSelect(uint8_t page) {
 	uint16_t write = EPC_PAGE_SELECT | ((page&0x07) << 8);
-	return EPC611::poll(write);
+	return poll(write);
 }
 uint16_t EPC611::reset() {
-	return EPC611::poll(EPC_RESET);
+	return poll(EPC_RESET);
 }
 uint16_t EPC611::quit() {
-	return EPC611::poll(EPC_QUIT);
+	return poll(EPC_QUIT);
 }
 uint16_t EPC611::nop() {
-	return EPC611::poll(EPC_NOP);
+	return poll(EPC_NOP);
 }
 
 // For polling read and write (Done after an epcRead or epcWrite)
@@ -59,17 +59,17 @@ uint16_t EPC611::nop() {
 }*/
 uint16_t EPC611::poll(uint16_t data)
 {
-	uint16_t status = EPC611::sendRecv(data);
+	uint16_t status = sendRecv(data);
 	while(status == EPC_WRITE_NOT_DONE || status == EPC_READ_NOT_DONE)
 	{
-		status = EPC611::sendRecv(data);
+		status = sendRecv(data);
 	}
 	return status;
 }
 
 void EPC611::startTIM() {
 	// Startup
-	while(EPC611::nop() != EPC_IDLE);
+	while(nop() != EPC_IDLE);
 
 }
 
@@ -111,7 +111,7 @@ void EPC611:startUHD()
 }
 
 // Returns 8 rows of sums for the 8x8 TOF sensor
-void EPC611::getFrameUHD(uint16_t DCS_frames[][]) // Gets 4 frames because that's what the chip does for some reason
+void EPC611::getFrameUHD(uint16_t DCS_frames[4][8]) // Gets 4 frames because that's what the chip does for some reason
 {
 	// Start frame measurement
 	pageSelect(2);
@@ -138,5 +138,5 @@ void EPC611::getFrameUHD(uint16_t DCS_frames[][]) // Gets 4 frames because that'
 
 bool EPC611::dataReady()
 {
-	return (HAL_GPIO_WritePin(gpio_data_rdy,data_rdy_pin) == GPIO_PIN_SET);
+	return (HAL_GPIO_ReadPin(gpio_data_rdy,data_rdy_pin) == GPIO_PIN_SET);
 }
