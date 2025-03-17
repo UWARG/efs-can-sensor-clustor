@@ -54,6 +54,9 @@ static CanardInstance canard;
 static uint8_t memory_pool[1024];
 static struct uavcan_protocol_NodeStatus node_status;
 static struct uavcan_equipment_ahrs_MagneticFieldStrength2 mlx90393_node;
+static struct uavcan_equipment_range_sensor_Measurement a121_node;
+static struct uavcan_equipment_range_sensor_Measurement epc611_node;
+static struct uavcan_equipment_air_data_StaticPressure icp20100_node;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -307,6 +310,78 @@ void send_MLX90393(void) {
     canardBroadcast(&canard,
     				UAVCAN_EQUIPMENT_AHRS_MAGNETICFIELDSTRENGTH2_SIGNATURE,
 					UAVCAN_EQUIPMENT_AHRS_MAGNETICFIELDSTRENGTH2_ID,
+                    &transfer_id,
+                    CANARD_TRANSFER_PRIORITY_LOW,
+                    buffer,
+                    len);
+}
+
+//Radar
+void send_a121(void) {
+    uint8_t buffer[UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_MAX_SIZE];
+
+    // put whatever you like in here for display in GUI
+    a121_node.sensor_id = 1;
+    //Need to set timestamp, beam orientation, field of view
+    a121_node.sensor_type = UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_SENSOR_TYPE_RADAR;
+    //Set reading type
+    uint32_t len = uavcan_equipment_range_sensor_Measurement_encode(&a121_node, buffer);
+
+    // we need a static variable for the transfer ID. This is
+    // incremeneted on each transfer, allowing for detection of packet
+    // loss
+    static uint8_t transfer_id;
+
+    canardBroadcast(&canard,
+    				UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_SIGNATURE,
+					UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_ID,
+                    &transfer_id,
+                    CANARD_TRANSFER_PRIORITY_LOW,
+                    buffer,
+                    len);
+}
+
+//Lidar
+void send_epc611(void) {
+    uint8_t buffer[UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_MAX_SIZE];
+
+    // put whatever you like in here for display in GUI
+    epc611_node.sensor_id = 1;
+    //Need to set timestamp, beam orientation, field of view
+    epc611_node.sensor_type = UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_SENSOR_TYPE_LIDAR;
+    //Set reading type
+    uint32_t len = uavcan_equipment_range_sensor_Measurement_encode(&epc611_node, buffer);
+
+    // we need a static variable for the transfer ID. This is
+    // incremeneted on each transfer, allowing for detection of packet
+    // loss
+    static uint8_t transfer_id;
+
+    canardBroadcast(&canard,
+    				UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_SIGNATURE,
+					UAVCAN_EQUIPMENT_RANGE_SENSOR_MEASUREMENT_ID,
+                    &transfer_id,
+                    CANARD_TRANSFER_PRIORITY_LOW,
+                    buffer,
+                    len);
+}
+
+void send_icp20100(void) {
+    uint8_t buffer[UAVCAN_EQUIPMENT_AIR_DATA_STATICPRESSURE_MAX_SIZE];
+
+    // put whatever you like in here for display in GUI
+    icp20100_node.sensor_id = 1;
+    //Need to set static pressure and variance
+    uint32_t len = uavcan_equipment_air_data_StaticPressure_encode(&icp20100_node, buffer);
+
+    // we need a static variable for the transfer ID. This is
+    // incremeneted on each transfer, allowing for detection of packet
+    // loss
+    static uint8_t transfer_id;
+
+    canardBroadcast(&canard,
+    				UAVCAN_EQUIPMENT_AIR_DATA_STATICPRESSURE_SIGNATURE,
+					UAVCAN_EQUIPMENT_AIR_DATA_STATICPRESSURE_ID,
                     &transfer_id,
                     CANARD_TRANSFER_PRIORITY_LOW,
                     buffer,
